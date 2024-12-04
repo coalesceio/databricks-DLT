@@ -25,12 +25,14 @@ automatically created for each streaming table.
 1.Loading file from external location is supported.Loading from
 databricks managed volume or external volume is currently not supported.
 
-2.The node which loads from a file creates a streaming table.For further processing,Re-Sync the columns in the mapping grid using Re-Sync columns button.
+2.Databricks by default creates tables with lowercase.Hence,it is better to keep table names in lowercase.[https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html](https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html)
+
+3.The node which loads from a file creates a streaming table.For further processing,Re-Sync the columns in the mapping grid using Re-Sync columns button.
 The streaming table can be re-created with the Columns inferred using Include Columns Inferred option.
 
-3.The streaming tables can be recreated and refreshed if there is a need to drop the inferred columns or add transformations to columns inferred in previous step.The structure of the streaming table is refreshed only on enabling the 'Refresh Stream' Option
+4.The streaming tables can be recreated and refreshed if there is a need to drop the inferred columns or add transformations to columns inferred in previous step.The structure of the streaming table is refreshed only on enabling the 'Refresh Stream' Option
 
-4.Materialized View is currently not supported by DLT node type.
+5.Materialized View is currently not supported by DLT node type.
 
 ### **DLT Node Configuration**
 
