@@ -20,15 +20,17 @@ is a table registered to Unity Catalog with extra support for streaming
 or incremental data processing. A Delta Live Tables pipeline is
 automatically created for each streaming table.
 
-## **Pre-requisites:**
+## **Key points**
 
 1.Loading file from external location is supported.Loading from
-databricks managed volume or external volume is currently not supported
+databricks managed volume or external volume is currently not supported.
 
 2.The node which loads from a file creates a streaming table.For further processing,Re-Sync the columns in the mapping grid using Re-Sync columns button.
 The streaming table can be re-created with the Columns inferred using Include Columns Inferred option.
 
-3.Materialized View is currently not supported by DLT node type.
+3.The streaming tables can be recreated and refreshed if there is a need to drop the inferred columns or add transformations to columns inferred in previous step.The structure of the streaming table is refreshed only on enabling the 'Refresh Stream' Option
+
+4.Materialized View is currently not supported by DLT node type.
 
 ### **DLT Node Configuration**
 
@@ -84,6 +86,8 @@ There are four configs within the Node Properties group.
 -   Header(Read Files-true):In case of csv file,the header is needed for file parsing
 
 -   Table Properties:Table properties like quality can be mentioned here
+  
+-   Refresh Stream:On enabling the toggle,we can perform full refresh of the table if any changes in table structure are done.
 
 -   Partition by(Read Files-false):Columns based on which streaming  table is to be partitioned
 
