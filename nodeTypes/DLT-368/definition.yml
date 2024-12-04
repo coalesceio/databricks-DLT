@@ -66,6 +66,11 @@ metadata:
             attributeName: tblproperties
             type: textBox
           
+          - displayName: Refresh streaming tables
+            attributeName: refreshstream
+            type: toggleButton
+            default: false
+          
           - type: toggleButton
             displayName: Partition by 
             attributeName: partclause

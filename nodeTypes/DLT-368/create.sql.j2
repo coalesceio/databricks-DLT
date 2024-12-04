@@ -138,9 +138,12 @@ CREATE OR REFRESH {{config.DLTtype}}
     {%-endif%} 
     FROM {%if config.DLTtype == 'STREAMING TABLE'%} STREAM {%endif%}    
     {%if config.readfiles == true %} 
-       read_files('{{config.fileloc}}',format=>'{{config.fileformat}}'{%if config.fileformat == 'csv'%},delimiter=>'{{config.delimiter}}',header=> {%if config.header == True %}true {%else%} false{%endif%}{%endif%})
+       read_files('{{config.fileloc}}',format=>'{{config.fileformat}}'{%if config.fileformat == 'csv'%},delimiter=>'{{config.delimiter}}',header=> {%if config.header == True %}true {%else%} false{%endif%}{%endif%});
     {%else%}
     (`{{db}}`.`{{sch}}`.`{{sources[0].dependencies[0].node.name}}`)
     {{ get_clause_new(join_clause) }}
     {%endif%}
-    
+    {%if config.refreshstream %}
+    {{ stage('REFRESH '+ config.DLTtype ) }}
+        REFRESH STREAMING TABLE  {{ ref_no_link(node.location.name, node.name) }}  FULL
+    {%endif%}
