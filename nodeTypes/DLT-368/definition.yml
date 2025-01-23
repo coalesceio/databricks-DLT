@@ -21,7 +21,6 @@ metadata:
             default: STREAMING TABLE
             options:
             - STREAMING TABLE
-            - MATERIALIZED VIEW
             isRequired: true
 
           - displayName: Read from files
