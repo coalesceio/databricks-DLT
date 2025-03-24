@@ -101,5 +101,5 @@ This is executed in two stages:
 
 ## Code
 
-* [Node definition]()
-* [Create Template]()
+* [Node definition](https://github.com/coalesceio/databricks-DLT/blob/main/nodeTypes/DLT-368/definition.yml)
+* [Create Template](https://github.com/coalesceio/databricks-DLT/blob/main/nodeTypes/DLT-368/create.sql.j2)
