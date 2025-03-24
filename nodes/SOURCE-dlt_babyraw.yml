@@ -29,6 +29,7 @@ operation:
         - {}
     primarykeyname: ""
     readfiles: true
+    refreshstream: false
     tableconstraints: false
     tblproperties: "\"quality\"=\"bronze\""
   database: ""
@@ -40,23 +41,6 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 58529167-6beb-4bbe-bd46-bad0c5bb4828
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
-        config: {}
-        dataType: INT
-        defaultValue: ""
-        description: ""
-        name: Year
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -137,6 +121,23 @@ operation:
         defaultValue: ""
         description: ""
         name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 58529167-6beb-4bbe-bd46-bad0c5bb4828
+          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: Year
         nullable: true
         sourceColumnReferences:
           - columnReferences: []

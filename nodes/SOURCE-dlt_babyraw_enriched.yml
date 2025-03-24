@@ -37,6 +37,7 @@ operation:
         - {}
     primarykeyname: ""
     readfiles: false
+    refreshstream: false
     tableconstraints: false
     tblproperties: "\"quality\"=\"silver\""
   database: ""
@@ -53,7 +54,7 @@ operation:
           columnCounter: 950b320e-f6e7-4759-9f1a-6a8598e8a871
           stepCounter: 64f111e6-5426-43cb-a863-8910482aba5b
         config: {}
-        dataType: INT
+        dataType: BIGINT
         description: ""
         name: Year
         nullable: true

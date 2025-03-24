@@ -29,6 +29,7 @@ operation:
         - {}
     primarykeyname: ""
     readfiles: true
+    refreshstream: false
     tableconstraints: false
     tblproperties: "\"quality\"=\"bronze\""
   database: ""

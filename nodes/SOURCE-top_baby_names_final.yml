@@ -28,6 +28,7 @@ operation:
         - {}
     primarykeyname: ""
     readfiles: false
+    refreshstream: false
     tableconstraints: false
     tblproperties: ""
   database: ""
