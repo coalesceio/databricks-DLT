@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 64f111e6-5426-43cb-a863-8910482aba5b
-name: dlt_babyraw_enriched
+name: dlt_babyraw_enriched1
 operation:
   config:
     DLTtype: STREAMING TABLE
@@ -44,7 +44,7 @@ operation:
   deployEnabled: true
   description: New York popular baby first name data cleaned and prepared for analysis.
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -54,7 +54,7 @@ operation:
           columnCounter: 950b320e-f6e7-4759-9f1a-6a8598e8a871
           stepCounter: 64f111e6-5426-43cb-a863-8910482aba5b
         config: {}
-        dataType: BIGINT
+        dataType: INT
         description: ""
         name: Year
         nullable: true
@@ -112,13 +112,13 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SOURCE
+          - locationName: TARGET
             nodeName: dlt_babyraw
         join:
-          joinCondition: FROM {{ ref('SOURCE', 'dlt_babyraw') }} `dlt_babyraw`
-        name: dlt_babyraw_enriched
+          joinCondition: FROM {{ ref('TARGET', 'dlt_babyraw') }} `dlt_babyraw`
+        name: dlt_babyraw_enriched1
         noLinkRefs: []
-  name: dlt_babyraw_enriched
+  name: dlt_babyraw_enriched1
   overrideSQL: false
   schema: ""
   sqlType: "368"

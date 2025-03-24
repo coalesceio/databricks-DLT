@@ -1,0 +1,11 @@
+fileVersion: 1
+id: "425"
+mappingDefinitions:
+  SOURCE:
+    database: coalesce_aws_dbx
+    schema: default
+  TARGET:
+    database: coalesce_aws_dbx
+    schema: de-target-qa
+name: QA
+type: Environment
