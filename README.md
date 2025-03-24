@@ -43,69 +43,32 @@ The DLT has two configuration groups:
 
 <h4 id="dlt-node-properties"> DLT Node Properties </h4>
 
-There are four configs within the Node Properties group.
+There are four configs within the **Node Properties** group.
 
--   Storage Location(required): Storage Location where the Delta Live Table will be created.
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
--   Node Type(required): Name of template used to create node objects.
-
--   Description: A description of the node\'s purpose.
-
--   Deploy Enabled(required):
-
-    -   If TRUE the node will be deployed or redeployed when changes are detected.
-
-    -   If FALSE the node will not be deployed or the node will be dropped during redeployment.
 
 <h4 id="dlt-source-data"> DLT Source Data </h4>
 
--   Type of Delta Live Table: The type of Delta Live Table
-
-\* Streaming table
-
-\* Materialized view
-
--   Read Files: True or False Toggle to whether the source id file or table
-
-    -   True - Allows you to load the file from external cloud location
-        > into streaming table
-
-    -   False - Allows you to load from table source
-      
--   Include Columns Inferred: After streaming table is created from file and columns synced to mapping grid,we can re-create the streaming table with any added transformations by enabling this toggle
-
--   File location(Read Files-true):The external cloud location of file
-
--   File format(Read Files-true):The file format of the file to be
-    > loaded
-
-> \* csv
->
-> \* json
-
--   Delimiter(Read Files-true):The delimiter used in case of csv file
-
--   Header(Read Files-true):In case of csv file,the header is needed for file parsing
-
--   Table Properties:Table properties like quality can be mentioned here
-  
--   Refresh Stream:On enabling the toggle,we can perform full refresh of the table if any changes in table structure are done.
-
--   Partition by(Read Files-false):Columns based on which streaming  table is to be partitioned
-
--   Table constraints(Read Files-false):Primary key and Foreign key  constraints can be specified
-
-\*Primary key
-
-\*Foreign key
-
--   Other Constraints(Read Files-false):Any other constraints specific to columns can be specified here.
-
-> \*Column name
->
-> \*Expectation expression
->
-> \*On Violation action
+| **Option**                     | **Description** |
+|----------------------------------|---------------|
+| **Type of Delta Live Table**     | - Streaming Table<br>- Materialized View |
+| **Read Files**                   | **True / False** toggle<br/>- **True**: Allows loading from an external cloud location into a streaming table.<br/>- **False**: Allows loading from a table source. |
+| **Include Columns Inferred**     | Enables recreating the streaming table with added transformations after syncing columns. |
+| **File Location** | External cloud location of the file. |
+| **File Format** | - CSV<br/>- JSON |
+| **Delimiter** | The delimiter used in case of a CSV file. |
+| **Header** | Specifies if a header is needed for CSV file parsing. |
+| **Table Properties**             | Defines table properties like quality. |
+| **Refresh Stream**               | Enables full refresh of the table if any changes in structure occur. |
+| **Partition By** | Specifies the columns used for partitioning the streaming table. |
+| **Table Constraints** | - **Primary Key**<br/>- **Foreign Key** |
+| **Other Constraints** | - **Column Name**<br/>- **Expectation Expression**<br>- **On Violation Action** |
 
 ## **DLT Deployment**
 
