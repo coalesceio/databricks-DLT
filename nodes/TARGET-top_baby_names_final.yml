@@ -34,7 +34,7 @@ operation:
   deployEnabled: true
   description: New York popular baby first name data cleaned and prepared for analysis.
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -75,11 +75,11 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SOURCE
-            nodeName: dlt_babyraw_enriched
+          - locationName: TARGET
+            nodeName: dlt_babyraw_enriched1
         join:
           joinCondition: |-
-            FROM {{ ref('SOURCE', 'dlt_babyraw_enriched') }} `dlt_babyraw_enriched`
+            FROM {{ ref('TARGET', 'dlt_babyraw_enriched1') }} `dlt_babyraw_enriched`
             WHERE Year = 2021
             GROUP BY FirstName
             ORDER BY Total_Count DESC

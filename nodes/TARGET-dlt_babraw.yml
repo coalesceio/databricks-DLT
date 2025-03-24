@@ -35,7 +35,7 @@ operation:
   deployEnabled: true
   description: Raw table version
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
