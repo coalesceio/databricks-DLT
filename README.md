@@ -32,8 +32,6 @@ The streaming table can be re-created with the Columns inferred using Include Co
 
 4.The streaming tables can be recreated and refreshed if there is a need to drop the inferred columns or add transformations to columns inferred in previous step.The structure of the streaming table is refreshed only on enabling the 'Refresh Stream' Option
 
-5.Materialized View is currently not supported by DLT node type.
-
 ### **DLT Node Configuration**
 
 The DLT has two configuration groups:
@@ -74,11 +72,11 @@ There are four configs within the **Node Properties** group.
 
 ### **DLT Initial Deployment**
 
-When deployed for the first time into an environment the DLT node will
-execute the following stage:
+When deployed for the first time into an environment the Work node of materialization type table will execute the below stage:
 
--   Create Streaming Table: This stage will execute a CREATE OR REFRESH
-    > statement and creates a Streaming Table in the target environment.
+| **Stage** | **Description** |
+|-----------|----------------|
+| **Create Streaming Table** | This will execute a CREATE OR REPLACE statement and create a table in the target environment |
 
 ### **DLT Redeployment**
 
@@ -96,6 +94,7 @@ Table in the target environment will be dropped.
 
 This is executed in two stages:
 
--   Delete Table: Coalesce Internal table is dropped.
-
--   Delete Table: Target table in Snowflake is dropped.
+| **Stage** | **Description** |
+|-----------|----------------|
+| **Delete Table** | Coalesce Internal table is dropped |
+| **Delete Table** | Target table in Databricks is dropped |
