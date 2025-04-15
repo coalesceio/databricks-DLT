@@ -10,10 +10,22 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node creates a streaming table in the target == #}
 
 
+{% if desiredState == undefined %}
+
+    {# View Name #}
+    {% set targetObjectDatabase = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[0] %} 
+    {% set targetObjectSchema = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[1] %} 
+    {% set fullyQualifiedTargetObjectName = ref_no_link(currentState.node.location.name, currentState.node.name) %}
+    
+       {{ stage('Drop Streaming table' , true, "sql", "drop") }}
+       DROP TABLE IF EXISTS {{ fullyQualifiedTargetObjectName }}
+
+{% elif currentState == undefined or (currentState != undefined and desiredState != currentState) %}
+
 # Storage Location-database and schema
 
-{%if config.readfiles != true%}
-{% set srcSchName = sources[0].dependencies[0].node.location.name %}
+{%if desiredState.config.readfiles != true%}
+{% set srcSchName = desiredState.sources[0].dependencies[0].node.location.name %}
 {% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
 {% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
 {%endif%}
@@ -21,19 +33,19 @@ does not permit copying or modification for any other purpose.
 
 # Target Location database and schema
 
-{% set tgtSchName = node.location.name %}
+{% set tgtSchName = desiredState.node.location.name %}
 {% set tdb = storageLocations | selectattr('name', 'equalto', tgtSchName) | map(attribute='database') | first %}
 {% set tsch = storageLocations | selectattr('name', 'equalto', tgtSchName) | map(attribute='schema') | first %}
 
-{%set join_clause = sources[0].join %}
+{%set join_clause = desiredState.sources[0].join %}
 {% set parts = join_clause.split('FROM') %}
 {% set other_clause = parts[1] %}
 {%- set nsVariables = namespace(partValues="",primarykeyValues="",foreignkeyValues="",oconstraints="") %}    
 # Partition by clause
 
-{%if config.partclause == true%}
+{%if desiredState.config.partclause == true%}
 
-       {% set column = config.partitionclause.get('items') | map(attribute='partname.name')| list%}
+       {% set column = desiredState.config.partitionclause.get('items') | map(attribute='partname.name')| list%}
 	 
 	      {% for r in column %}
 			   {% set nsVariables.partValues = nsVariables.partValues + r %}
@@ -47,9 +59,9 @@ does not permit copying or modification for any other purpose.
 
 # Primary key clause
 
-{%if config.primary == true%}
+{%if desiredState.config.primary == true%}
 
-   {% set column = config.primarykeycon.get('items') | map(attribute='primarykey.name')| list%}
+   {% set column = desiredState.config.primarykeycon.get('items') | map(attribute='primarykey.name')| list%}
    
 	 
 	      {% for r in column %}
@@ -57,31 +69,31 @@ does not permit copying or modification for any other purpose.
          {%- if not loop.last -%} {% set nsVariables.primarykeyValues = nsVariables.primarykeyValues +','%} {% endif %}
         {% endfor %}
        
-         {% set nsVariables.primarykeyValues = 'CONSTRAINT ' + config.primarykeyname + ' PRIMARY KEY ('+nsVariables.primarykeyValues +')' %}
+         {% set nsVariables.primarykeyValues = 'CONSTRAINT ' + desiredState.config.primarykeyname + ' PRIMARY KEY ('+nsVariables.primarykeyValues +')' %}
 
 {%endif%}
 
 #Foreign key clause
 
-{%if config.foreign == true%}
+{%if desiredState.config.foreign == true%}
 
-   {% set column = config.foreignkeycon.get('items') | map(attribute='foreignkey.name')| list%}
+   {% set column = desiredState.config.foreignkeycon.get('items') | map(attribute='foreignkey.name')| list%}
 	 
 	      {% for r in column %}
 			   {% set nsVariables.foreignkeyValues = nsVariables.foreignkeyValues +r %}
          {%- if not loop.last -%} {% set nsVariables.foreignkeyValues = nsVariables.foreignkeyValues +','%} {% endif %}
         {% endfor %}
        
-         {% set nsVariables.foreignkeyValues = 'CONSTRAINT ' + config.foreignkeyname + ' FOREIGN KEY ('+nsVariables.foreignkeyValues +')' + ' REFERENCES '+ config.parentabname %}
+         {% set nsVariables.foreignkeyValues = 'CONSTRAINT ' + desiredState.config.foreignkeyname + ' FOREIGN KEY ('+nsVariables.foreignkeyValues +')' + ' REFERENCES '+ desiredState.config.parentabname %}
 
 {%endif%}
 
 #Other constraints
 
-    {%if config.constraints == true%}
+    {%if desiredState.config.constraints == true%}
 	
-	       {% set column, expression,violation = config.constraintsspec.get('items') | map(attribute='columnName.name')| list, config.constraintsspec.get('items') | map(attribute='sqlExpression') | list ,
-	      config.constraintsspec.get('items') | map(attribute='onviolation') | list%}
+	       {% set column, expression,violation = desiredState.config.constraintsspec.get('items') | map(attribute='columnName.name')| list, desiredState.config.constraintsspec.get('items') | map(attribute='sqlExpression') | list ,
+	      desiredState.config.constraintsspec.get('items') | map(attribute='onviolation') | list%}
 
 	     
 	    {% for r in column %}
@@ -98,14 +110,14 @@ does not permit copying or modification for any other purpose.
 
 {# CreateSQL for Table #}
 
-{{ stage('CREATE '+ config.DLTtype ) }}
+{{ stage('CREATE '+ desiredState.config.DLTtype ) }}
 
-CREATE OR REFRESH {{config.DLTtype}} 
-{%-if config.readfiles != true%}{{ ref_no_link(node.location.name, node.name) }}
+CREATE OR REFRESH {{desiredState.config.DLTtype}} 
+{%-if desiredState.config.readfiles != true%}{{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
 {%else%}
-`{{tdb}}`.`{{tsch}}`.`{{node.name}}`
+`{{tdb}}`.`{{tsch}}`.`{{desiredState.node.name}}`
 {%endif%}
-{%- if config.readfiles != true or config.inccolumns == true%}
+{%- if desiredState.config.readfiles != true or desiredState.config.inccolumns == true%}
       (
         {% for col in columns %}
             `{{ col.name }}` {{ col.dataType }}
@@ -113,21 +125,21 @@ CREATE OR REFRESH {{config.DLTtype}}
             {% endif %}
             {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
             {%- if not loop.last %}, {% endif %}
-            {%-if loop.last and (config.foreign == true or config.primary == true) -%},{%endif%}
+            {%-if loop.last and (desiredState.config.foreign == true or desiredState.config.primary == true) -%},{%endif%}
         {% endfor %}
-{% if config.primary == true%} {{nsVariables.primarykeyValues}}{%if config.foreign == true -%},{%endif-%}{%endif%}
-  {%if config.foreign == true%}{{nsVariables.foreignkeyValues}}{%endif%}
-  {%if config.constraints == true%}{{nsVariables.oconstraints}}{%endif%}  )
+{% if desiredState.config.primary == true%} {{nsVariables.primarykeyValues}}{%if desiredState.config.foreign == true -%},{%endif-%}{%endif%}
+  {%if desiredState.config.foreign == true%}{{nsVariables.foreignkeyValues}}{%endif%}
+  {%if desiredState.config.constraints == true%}{{nsVariables.oconstraints}}{%endif%}  )
   {%-endif-%} 
   
-    {% if node.description | length > 0 -%} COMMENT '{{ node.description |escape }}'{%- endif%}
-    {% if config.partclause == true %} {{ nsVariables.partValues }} {%endif%}
-    {%if config.tblproperties != ""-%}TBLPROPERTIES ({{config.tblproperties}}){%endif%}
+    {% if desiredState.node.description | length > 0 -%} COMMENT '{{ desiredState.node.description |escape }}'{%- endif%}
+    {% if desiredState.config.partclause == true %} {{ nsVariables.partValues }} {%endif%}
+    {%if desiredState.config.tblproperties != ""-%}TBLPROPERTIES ({{desiredState.config.tblproperties}}){%endif%}
     AS
     SELECT 
-    {%if config.readfiles == true and config.inccolumns == false%} * 
+    {%if desiredState.config.readfiles == true and desiredState.config.inccolumns == false%} * 
     {%else%}
-    {% for col in sources[0].columns %}
+    {% for col in desiredState.sources[0].columns %}
             {%if col.transform == "" %}
                 `{{col.name}}`
             {%else%}
@@ -136,14 +148,15 @@ CREATE OR REFRESH {{config.DLTtype}}
             {%- if not loop.last -%}, {% endif %}
     {% endfor %}
     {%-endif%} 
-    FROM {%if config.DLTtype == 'STREAMING TABLE'%} STREAM {%endif%}    
-    {%if config.readfiles == true %} 
-       read_files('{{config.fileloc}}',format=>'{{config.fileformat}}'{%if config.fileformat == 'csv'%},delimiter=>'{{config.delimiter}}',header=> {%if config.header == True %}true {%else%} false{%endif%}{%endif%});
+    FROM {%if desiredState.config.DLTtype == 'STREAMING TABLE'%} STREAM {%endif%}    
+    {%if desiredState.config.readfiles == true %} 
+       read_files('{{desiredState.config.fileloc}}',format=>'{{desiredState.config.fileformat}}'{%if desiredState.config.fileformat == 'csv'%},delimiter=>'{{desiredState.config.delimiter}}',header=> {%if desiredState.config.header == True %}true {%else%} false{%endif%}{%endif%});
     {%else%}
-    (`{{db}}`.`{{sch}}`.`{{sources[0].dependencies[0].node.name}}`)
+    (`{{db}}`.`{{sch}}`.`{{desiredState.sources[0].dependencies[0].node.name}}`)
     {{ get_clause_new(join_clause) }}
     {%endif%}
-    {%if config.refreshstream %}
-    {{ stage('REFRESH '+ config.DLTtype ) }}
-        REFRESH STREAMING TABLE  {{ ref_no_link(node.location.name, node.name) }}  FULL
+    {%if desiredState.config.refreshstream %}
+    {{ stage('REFRESH '+ desiredState.config.DLTtype ) }}
+        REFRESH STREAMING TABLE  {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}  FULL
     {%endif%}
+{%endif%}

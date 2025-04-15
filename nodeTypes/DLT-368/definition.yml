@@ -10,6 +10,7 @@ metadata:
     plural: Delta Live Tables
     tagColor: '#35D491'
 
+    deployStrategy: advanced
     isColumnResyncEnabled: true
 
     config:
