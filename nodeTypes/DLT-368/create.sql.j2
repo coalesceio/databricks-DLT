@@ -110,7 +110,7 @@ does not permit copying or modification for any other purpose.
 
 {# CreateSQL for Table #}
 
-{{ stage('CREATE '+ desiredState.config.DLTtype ) }}
+{{ stage('CREATE '+ desiredState.config.DLTtype,true, "sql", "create" ) }}
 
 CREATE OR REFRESH {{desiredState.config.DLTtype}} 
 {%-if desiredState.config.readfiles != true%}{{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}

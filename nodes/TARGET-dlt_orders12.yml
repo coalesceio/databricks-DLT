@@ -40,41 +40,7 @@ operation:
   materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 943e2466-9dd1-41a6-ba72-55a7a7f24593
-          stepCounter: 698354e2-44eb-4825-a34e-f10097b86249
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: _c0
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: cb60dba4-c6c6-4607-af3a-dd3aed58e1d7
-          stepCounter: 698354e2-44eb-4825-a34e-f10097b86249
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: _rescued_data
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
+    columns: []
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
