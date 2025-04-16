@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 698354e2-44eb-4825-a34e-f10097b86249
-name: dlt_orders12
+id: 2a0a8c4d-c9c3-43e4-8ae9-9ba413743069
+name: dlt_src
 operation:
   config:
     DLTtype: STREAMING TABLE
@@ -9,8 +9,8 @@ operation:
       items:
         - {}
     delimiter: "|"
-    fileformat: json
-    fileloc: /databricks-datasets/retail-org/sales_orders
+    fileformat: csv
+    fileloc: s3://dataentrega/deltalive/samp
     foreign: false
     foreignkeycon:
       items:
@@ -50,9 +50,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: dlt_orders12
+        name: dlt_src
         noLinkRefs: []
-  name: dlt_orders12
+  name: dlt_src
   overrideSQL: false
   schema: ""
   sqlType: "368"
