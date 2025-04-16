@@ -17,7 +17,7 @@ operation:
         - {}
     foreignkeyname: ""
     header: true
-    inccolumns: true
+    inccolumns: false
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:

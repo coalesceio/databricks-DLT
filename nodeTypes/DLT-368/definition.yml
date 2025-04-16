@@ -10,6 +10,7 @@ metadata:
     plural: Delta Live Tables
     tagColor: '#35D491'
 
+    deployStrategy: advanced
     isColumnResyncEnabled: true
 
     config:
@@ -17,11 +18,11 @@ metadata:
           items:
           - displayName: Type of Delta Live Table
             attributeName: DLTtype
-            type: dropdownSelector
+            type: materializationSelector
             default: STREAMING TABLE
             options:
             - STREAMING TABLE
-            isRequired: true
+            enableIf: "true"
 
           - displayName: Read from files
             attributeName: readfiles
