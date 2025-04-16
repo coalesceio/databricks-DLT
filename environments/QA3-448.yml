@@ -1,0 +1,11 @@
+fileVersion: 1
+id: "448"
+mappingDefinitions:
+  SOURCE:
+    database: coalesce_aws_dbx
+    schema: default
+  TARGET:
+    database: coalesce_aws_dbx
+    schema: de-target-dev
+name: QA3
+type: Environment

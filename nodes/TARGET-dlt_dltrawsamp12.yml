@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 9d026f0a-7945-4399-a7cf-fd01b71fa868
-name: dltrawsamp
+id: 104afaef-1d20-4dec-92ea-d36e135df3f9
+name: dlt_dltrawsamp12
 operation:
   config:
     DLTtype: STREAMING TABLE
@@ -10,14 +10,14 @@ operation:
         - {}
     delimiter: "|"
     fileformat: csv
-    fileloc: s3://dataentrega/deltalive/samp/
+    fileloc: /Volumes/coalesce_aws_dbx/dlt-testing/ext-vol/samp/
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
     header: true
-    inccolumns: true
+    inccolumns: false
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
@@ -36,7 +36,7 @@ operation:
   deployEnabled: true
   description: Sample raw table
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -46,8 +46,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1690823f-f7cf-4d2f-b6f2-77b699acfa2a
-          stepCounter: 9d026f0a-7945-4399-a7cf-fd01b71fa868
+          columnCounter: ac220e15-da3e-4f4e-b9e9-1aac6d17f0bc
+          stepCounter: 104afaef-1d20-4dec-92ea-d36e135df3f9
         config: {}
         dataType: INT
         defaultValue: ""
@@ -63,8 +63,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7994b6a1-6e72-401d-ac2f-644020d740fc
-          stepCounter: 9d026f0a-7945-4399-a7cf-fd01b71fa868
+          columnCounter: db0c43be-f84c-499c-aa09-6484e94b0de4
+          stepCounter: 104afaef-1d20-4dec-92ea-d36e135df3f9
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -80,8 +80,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4e982ffd-d202-4674-be0a-b9fb684dd6f1
-          stepCounter: 9d026f0a-7945-4399-a7cf-fd01b71fa868
+          columnCounter: ac396769-227a-4a65-a3f4-96bc7d46701c
+          stepCounter: 104afaef-1d20-4dec-92ea-d36e135df3f9
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -97,8 +97,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7bf61d8c-ff9f-474e-9946-8ed9af6710d4
-          stepCounter: 9d026f0a-7945-4399-a7cf-fd01b71fa868
+          columnCounter: a42d7c80-dd1b-4ddd-8e04-7eab8a309529
+          stepCounter: 104afaef-1d20-4dec-92ea-d36e135df3f9
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -114,8 +114,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e40b511d-b602-49e5-af66-387498b0820d
-          stepCounter: 9d026f0a-7945-4399-a7cf-fd01b71fa868
+          columnCounter: 9287e196-fe05-4314-8656-3549c81b971f
+          stepCounter: 104afaef-1d20-4dec-92ea-d36e135df3f9
         config: {}
         dataType: INT
         defaultValue: ""
@@ -135,9 +135,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: dltrawsamp
+        name: dlt_dltrawsamp12
         noLinkRefs: []
-  name: dltrawsamp
+  name: dlt_dltrawsamp12
   overrideSQL: false
   schema: ""
   sqlType: "368"

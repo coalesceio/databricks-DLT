@@ -26,16 +26,16 @@ does not permit copying or modification for any other purpose.
 
 {%if desiredState.config.readfiles != true%}
 {% set srcSchName = desiredState.sources[0].dependencies[0].node.location.name %}
-{% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
-{% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
+{% set db = desiredState.storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
+{% set sch = desiredState.storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
 {%endif%}
 
 
 # Target Location database and schema
 
 {% set tgtSchName = desiredState.node.location.name %}
-{% set tdb = storageLocations | selectattr('name', 'equalto', tgtSchName) | map(attribute='database') | first %}
-{% set tsch = storageLocations | selectattr('name', 'equalto', tgtSchName) | map(attribute='schema') | first %}
+{% set tdb = desiredState.storageLocations | selectattr('name', 'equalto', tgtSchName) | map(attribute='database') | first %}
+{% set tsch = desiredState.storageLocations | selectattr('name', 'equalto', tgtSchName) | map(attribute='schema') | first %}
 
 {%set join_clause = desiredState.sources[0].join %}
 {% set parts = join_clause.split('FROM') %}
