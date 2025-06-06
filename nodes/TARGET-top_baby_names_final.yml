@@ -67,7 +67,7 @@ operation:
           - columnReferences:
               - columnCounter: 41261898-153c-44b0-9238-3e693fc566bc
                 stepCounter: 64f111e6-5426-43cb-a863-8910482aba5b
-            transform: sum(`dlt_babyraw_enriched`.`Count`)
+            transform: sum(`dlt_babyraw_enriched1`.`Count`)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
