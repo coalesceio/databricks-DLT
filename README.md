@@ -55,11 +55,11 @@ There are four configs within the **Node Properties** group.
 
 | **Option**                     | **Description** |
 |----------------------------------|---------------|
-| **Type of Delta Live Table**     | - Streaming Table<br>- Materialized View |
-| **Read Files**                   | **True / False** toggle<br/>- **True**: Allows loading from an external cloud location into a streaming table.<br/>- **False**: Allows loading from a table source. |
+| **Type of Delta Live Table**     | - Streaming Table <br/>- Materialized View |
+| **Read Files**                   | **True / False** toggle <br/>- **True**: Allows loading from an external cloud location into a streaming table.<br/>- **False**: Allows loading from a table source. |
 | **Include Columns Inferred**     | Enables recreating the streaming table with added transformations after syncing columns. |
 | **File Location** | External cloud location of the file. |
-| **File Format** | - CSV<br/>- JSON |
+| **File Format** | - CSV <br/>- JSON |
 | **Delimiter** | The delimiter used in case of a CSV file. |
 | **Header** | Specifies if a header is needed for CSV file parsing. |
 | **Table Properties**             | Defines table properties like quality. |
