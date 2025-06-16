@@ -96,7 +96,7 @@ When deployed for the first time into an environment DLT node will execute three
 
 | **Stage** | **Description** |
 |-----------|----------------|
-| **Create Streaming table** | This stage will execute a CREATE OR REPLACE statement and create a Streaming table in the target environment |
+| **Create Streaming table** | This stage will execute a CREATE OR REFRESH statement and create a Streaming table in the target environment |
 
 ### Redeployment
 
