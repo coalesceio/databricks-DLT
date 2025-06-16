@@ -36,7 +36,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []

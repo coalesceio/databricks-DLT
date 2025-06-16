@@ -36,7 +36,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
@@ -97,11 +97,11 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SOURCE
+          - locationName: TARGET
             nodeName: dlt_ordersample_custsample
         join:
           joinCondition: |-
-            FROM {{ ref('SOURCE', 'dlt_ordersample_custsample') }} `dlt_ordersample_custsample`
+            FROM {{ ref('TARGET', 'dlt_ordersample_custsample') }} `dlt_ordersample_custsample`
             group by `order_datetime`,`_c4`
         name: dlt_state_orders
         noLinkRefs: []
