@@ -6,6 +6,6 @@ mappingDefinitions:
     schema: default
   TARGET:
     database: coalesce
-    schema: target_de
+    schema: target_dep
 name: QA3
 type: Environment
