@@ -30,6 +30,7 @@ operation:
     primarykeyname: ""
     readfiles: true
     refreshstream: true
+    schedulerefresh: false
     tableconstraints: false
     tblproperties: ""
   database: ""

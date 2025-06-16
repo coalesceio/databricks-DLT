@@ -25,77 +25,47 @@ does not permit copying or modification for any other purpose.
 
   
     {% set ns = namespace( storageLocationTest= true,
-    descolchanges = 0,othercolchanges = 0,clusterTest = false,colchanges=0,nsCurrentDepStorageLocations="",nsCurrentSourceStorageLocations="",nsDesiredDepStorageLocations="",nsDesiredSourceStorageLocations="",sourcestorageLocationTest=true,scheduleref="",createTst=false,alterTest=false ) %}
+    descolchanges = 0,othercolchanges = 0,clusterTest = false,colchanges=0,nsCurrentDepStorageLocations="",nsCurrentSourceStorageLocations="",nsDesiredDepStorageLocations="",nsDesiredSourceStorageLocations="",sourcestorageLocationTest=true,scheduleref="",createTst=false,alterTest=false,fileproptst=true ) %}
 	
-  		{%if currentState !=undefined%} 
-   
-              
-		     {# Node #}
+  		{%if currentState !=undefined%}   
+
+		{# Node #}
              {% set nodeNameTest = currentState.node.name == desiredState.node.name %}		   
-		     {% set joinTest = currentState.join == desiredState.join %}
              {%set nodeCommentTest = currentState.node.description == desiredState.node.description %}
-           
-            {# Current State Source Storage Location Info #}
-            {% for source in currentState.sources %}
-                {% for dep in source.dependencies %}
-                    {% set depSourceLocation = dep.node.location.name %}
-                    {% if loop.first %}
-                        {% set ns.nsCurrentDepStorageLocations = depSourceLocation %}
-                    {% else %}
-                        {% set ns.nsCurrentDepStorageLocations = ns.nsCurrentDepStorageLocations + ',' + depSourceLocation %}
-                    {% endif %}
-                {% endfor %}
-                
-                {% if loop.first %}
-                    {% set ns.nsCurrentSourceStorageLocations = ns.nsCurrentDepStorageLocations %}
-                {% else %}
-                    {% set ns.nsCurrentSourceStorageLocations = ns.nsCurrentSourceStorageLocations + ',' + ns.nsCurrentDepStorageLocations %}
-                {% endif %}
-            {% endfor %}
+             
+        {% set sourcesTest = currentState.sources | count == desiredState.sources | count %}
+		
+        {%if sourcesTest == true%}
+           {% for src in desiredState.sources %}
+            {% if  currentState.sources[loop.index0].join != src.join %}
+                {% set nsVariables.joinTest = false %}  {# Set joinTest to false if changes are detected #}
+            {% endif %}
+           {% endfor %}
+        {%endif%}
 
+        {# Change Node Name or Change Storage Location #}
+        {# Storage Location Tests #}
+        {# Test  #}
+        {%if currentState.storageLocations|length == 0%}          
+              {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='database') | string %}
+              {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='schema') | string %}
+               {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}
+               
+        {%else %}   
+            {# Current target node mappings #}
+            {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='database') | first %}
+            {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='schema') | first %}
+            {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}  
+		    {% endif %}		 
+        
+            {# Desired target node mappings #}
+            {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', desiredState.node.location.name) | map(attribute='database') | first %}
+            {% set desiredSchema = desiredState.storageLocations | selectattr('name', 'equalto', desiredState.node.location.name) | map(attribute='schema') | first %}
+            {% set desiredDatabaseSchema = desiredDatabase + '.' + desiredSchema %}           
             
-            {% set currentStorageLocations = (ns.nsCurrentSourceStorageLocations).split(',') | list %}
-            {% set currentUniqueStorageLocations = currentStorageLocations | unique | sort | list %}
-
-            
-            {# Desired State Source Storage Location Info #}
-            {% for source in desiredState.sources %}
-                {% for dep in source.dependencies %}
-                    {% set depSourceLocation = dep.node.location.name %}
-                    {% if loop.first %}
-                        {% set ns.nsDesiredDepStorageLocations = depSourceLocation %}
-                    {% else %}
-                        {% set ns.nsDesiredDepStorageLocations = ns.nsDesiredDepStorageLocations + ',' + depSourceLocation %}
-                    {% endif %}
-                {% endfor %}
-                
-                {% if loop.first %}
-                    {% set ns.nsDesiredSourceStorageLocations = ns.nsDesiredDepStorageLocations %}
-                {% else %}
-                    {% set ns.nsDesiredSourceStorageLocations = ns.nsDesiredSourceStorageLocations + ',' + ns.nsDesiredDepStorageLocations %}
-                {% endif %}
-            {% endfor %}
-
-           
-            {% set desiredStorageLocations = (ns.nsDesiredSourceStorageLocations).split(',') | list %}
-            {% set desiredUniqueStorageLocations = desiredStorageLocations | unique | sort | list %}
-
-            {# Source storage location Test  #}
-            {% for name in desiredUniqueStorageLocations if ns.sourcestorageLocationTest == true %}
-                {# Current mappings #}
-                {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='database') | first %}
-                {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='schema') | first %}
-                {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}
-                
-                {# Desired mappings #}
-                {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='database') | first %}
-                {% set desiredSchema = desiredState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='schema') | first %}
-                {% set desiredDatabaseSchema = desiredDatabase + '.' + desiredSchema %}
-
-                {% if currentDatabaseSchema != desiredDatabaseSchema %}
-                    {% set ns.sourcestorageLocationTest = false %}
-                {% endif %}
-            {% endfor %}
+        {% if currentDatabaseSchema != desiredDatabaseSchema %}
+            {% set nsVariables.storageLocationTest = false %}
+        {% endif %}
 
           
           {# Test to see if the transform in a column has changed #}
@@ -106,28 +76,31 @@ does not permit copying or modification for any other purpose.
 
           {% set columnsTransformTest = currentTransformArray == desiredTransformArray %}
 
+          {#Partition by test#}
+          {%set partitiontest = currentState.config.partclause == desiredState.config.partclause %}
 
-            {#Target location Test  #}
-            {%if currentState.storageLocations|length == 0%}          
-              {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='database') | string %}
-              {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='schema') | string %}
-               {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}
-               
-            {%else %}   
-            {# Current target node mappings #}
-            {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='database') | first %}
-            {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='schema') | first %}
-            {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}  
-			{% endif %}		 
-        
-            {# Desired target node mappings #}
-            {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', desiredState.node.location.name) | map(attribute='database') | first %}
-            {% set desiredSchema = desiredState.storageLocations | selectattr('name', 'equalto', desiredState.node.location.name) | map(attribute='schema') | first %}
-            {% set desiredDatabaseSchema = desiredDatabase + '.' + desiredSchema %}           
+          {#Table properties test#}
+          {%set tblproptst = currentState.config.tblproperties == desiredState.config.tblproperties%}
+
+          {#Table Constraints#}
+          {%set tblconsttst = currentState.config.tableconstraints == desiredState.config.tableconstraints%}
+
+          {#Other Constraints#}
+          {%set consttst = currentState.config.constraints == desiredState.config.constraints%}
+
+          {#Read files#}
+          {%set  filetst = currentState.config.readfiles ==  desiredState.config.readfiles %}
+
+
+          {%if currentState.config.readfiles == true and  desiredState.config.readfiles == true%}
+           
+            {%if currentState.config.fileloc != desiredState.config.fileloc or currentState.config.fileformat != desiredState.config.fileformat or currentState.config.inccolumns != desiredState.config.inccolumns%}
+
+             {%set ns.fileproptst = false %}
             
-             {% if currentDatabaseSchema != desiredDatabaseSchema %}
-                {% set ns.storageLocationTest = false %}
-             {% endif %}
+          {%endif%}
+
+          {%endif%}
 
 		    {#Add columns#}
             {% for addDesCol in desiredState.columns %}
@@ -198,7 +171,17 @@ does not permit copying or modification for any other purpose.
 			      joinTest == false or 
 			      columnsTransformTest == false or 
             ns.sourcestorageLocationTest == false or
-             ns.storageLocationTest == false or nodeNameTest == false or nodeCommentTest == false%}    
+             ns.storageLocationTest == false or 
+             nodeNameTest == false or 
+             nodeCommentTest == false 
+             or sourcesTest == false
+             or partitiontest == false
+             or tblproptst == false
+             or tblconsttst == false
+             or consttst == false 
+             or filetst == false
+             or ns.fileproptst == false
+             %}    
             {% set ns.createTst = true %}
           {% else %}
             {% set ns.createTst = false %}
@@ -340,12 +323,21 @@ CREATE OR REFRESH {{desiredState.config.DLTtype}}
     AS
     SELECT 
     {%if desiredState.config.readfiles == true and desiredState.config.inccolumns == false%} * 
-    {%else%}
+    {%elif desiredState.config.readfiles == true and desiredState.config.inccolumns == true%}
+	{% for col in desiredState.sources[0].columns %}
+	{%if col.transform == ""%}
+	     `{{ col.name }}`      
+	{%else%}
+          {{ get_source_transform(col) }} AS `{{ col.name }}`
+    {%endif%}
+            {%- if not loop.last -%}, {% endif %}
+    {% endfor %}
+	{%else%}
     {% for col in desiredState.sources[0].columns %}
                  {{ get_source_transform(col) }} AS `{{ col.name }}`
             {%- if not loop.last -%}, {% endif %}
     {% endfor %}
-    {%-endif%} 
+    {%-endif%}  
     FROM {%if desiredState.config.DLTtype == 'STREAMING TABLE'%} STREAM {%endif%}    
     {%if desiredState.config.readfiles == true %} 
        read_files('{{desiredState.config.fileloc}}',format=>'{{desiredState.config.fileformat}}'{%if desiredState.config.fileformat == 'csv'%},delimiter=>'{{desiredState.config.delimiter}}',header=> {%if desiredState.config.header == True %}true {%else%} false{%endif%}{%endif%});
