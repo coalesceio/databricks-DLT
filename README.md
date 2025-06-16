@@ -5,7 +5,7 @@
 The Coalesce DLT node type allows you to create a streaming table,a type
 of Delta Live Table.
 
-[Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html)
+[Delta Live Tables](https://docs.databricks.com/aws/en/dlt/streaming-tables)
 is a declarative framework for building reliable, maintainable, and
 testable data processing pipelines. Delta Live Tables manages how your
 data is transformed based on queries you define for each processing
@@ -22,13 +22,14 @@ automatically created for each streaming table.
 
 ## **Key points**
 
-1.Loading file from external location is supported.Loading from
-databricks managed volume or external volume is currently not supported.
+1.Loading file from external location/databricks managed volume/external volume is currently supported.
 
 2.Databricks by default creates tables with lowercase.Hence,it is better to keep table names in lowercase.[https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html](https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html)
 
 3.The node which loads from a file creates a streaming table.For further processing,Re-Sync the columns in the mapping grid using Re-Sync columns button.
 The streaming table can be re-created with the Columns inferred using Include Columns Inferred option.
+
+![dlt-resync](https://github.com/user-attachments/assets/8199536e-ef4d-4b24-ab69-ce8c89356938)
 
 4.The streaming tables can be recreated and refreshed if there is a need to drop the inferred columns or add transformations to columns inferred in previous step.The structure of the streaming table is refreshed only on enabling the 'Refresh Stream' Option
 
