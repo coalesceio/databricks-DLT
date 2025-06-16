@@ -136,3 +136,4 @@ This is executed as a single stage:
 
 * [Node definition](https://github.com/coalesceio/databricks-DLT/blob/main/nodeTypes/DLT-368/definition.yml)
 * [Create Template](https://github.com/coalesceio/databricks-DLT/blob/main/nodeTypes/DLT-368/create.sql.j2)
+* [Run Template](https://github.com/coalesceio/databricks-DLT/blob/main/nodeTypes/DLT-368/run.sql.j2)
