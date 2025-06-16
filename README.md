@@ -40,7 +40,7 @@ The DLT has two configuration groups:
 * [DLT Node Properties](#dlt-node-properties)
 * [General Options](#general-options)
 * [DLT Options](#dlt-options)
-* [Schedule Options](#schedule-options]
+* [Schedule Options](#schedule-options)
 
 <h4 id="dlt-node-properties"> DLT Node Properties </h4>
 
