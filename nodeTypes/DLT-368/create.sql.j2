@@ -25,7 +25,7 @@ does not permit copying or modification for any other purpose.
 
   
     {% set ns = namespace( storageLocationTest= true,
-    descolchanges = 0,othercolchanges = 0,clusterTest = false,colchanges=0,nsCurrentDepStorageLocations="",nsCurrentSourceStorageLocations="",nsDesiredDepStorageLocations="",nsDesiredSourceStorageLocations="",sourcestorageLocationTest=true,scheduleref="",createTst=false,alterTest=false,fileproptst=true ) %}
+    descolchanges = 0,othercolchanges = 0,clusterTest = false,colchanges=0,nsCurrentDepStorageLocations="",nsCurrentSourceStorageLocations="",nsDesiredDepStorageLocations="",nsDesiredSourceStorageLocations="",sourcestorageLocationTest=true,scheduleref="",createTst=false,alterTest=false,fileproptst=true,joinTest=true ) %}
 	
   		{%if currentState !=undefined%}   
 
@@ -38,7 +38,7 @@ does not permit copying or modification for any other purpose.
         {%if sourcesTest == true%}
            {% for src in desiredState.sources %}
             {% if  currentState.sources[loop.index0].join != src.join %}
-                {% set nsVariables.joinTest = false %}  {# Set joinTest to false if changes are detected #}
+                {% set ns.joinTest = false %}  {# Set joinTest to false if changes are detected #}
             {% endif %}
            {% endfor %}
         {%endif%}
@@ -64,7 +64,7 @@ does not permit copying or modification for any other purpose.
             {% set desiredDatabaseSchema = desiredDatabase + '.' + desiredSchema %}           
             
         {% if currentDatabaseSchema != desiredDatabaseSchema %}
-            {% set nsVariables.storageLocationTest = false %}
+            {% set ns.storageLocationTest = false %}
         {% endif %}
 
           

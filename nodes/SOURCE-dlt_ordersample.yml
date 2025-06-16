@@ -30,8 +30,12 @@ operation:
     primarykeyname: ""
     readfiles: true
     refreshstream: false
+    schedulePeriodOption: Periodic schedule
+    schedulerefresh: true
     tableconstraints: false
     tblproperties: ""
+    tp: EVERY WEEKS
+    tph: "7"
   database: ""
   deployEnabled: true
   description: ""
