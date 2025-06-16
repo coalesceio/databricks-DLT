@@ -37,7 +37,9 @@ The streaming table can be re-created with the Columns inferred using Include Co
 The DLT has two configuration groups:
 
 * [DLT Node Properties](#dlt-node-properties)
-* [DLT Source Data](#dlt-source-data)
+* [General Options](#general-options)
+* [DLT Options](#dlt-options)
+* [Schedule Options](#schedule-options]
 
 <h4 id="dlt-node-properties"> DLT Node Properties </h4>
 
@@ -50,8 +52,14 @@ There are four configs within the **Node Properties** group.
 | **Description** | A description of the node's purpose |
 | **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
+### General Options
 
-<h4 id="dlt-source-data"> DLT Source Data </h4>
+| **Option** | **Description** |
+|------------|----------------|
+| **Create As** | Choose materialization type-by default it is STREAMING TABLE  |
+|**Schedule refresh**| True / False toggle<br/>- **True**: Schedule Option will be visible<br/>- **False**:  Schedule Option will be disabled|
+
+<h4 id="dlt-options"> DLT options </h4>
 
 | **Option**                     | **Description** |
 |----------------------------------|---------------|
@@ -68,36 +76,60 @@ There are four configs within the **Node Properties** group.
 | **Table Constraints** | - **Primary Key**<br/>- **Foreign Key** |
 | **Other Constraints** | - **Column Name**<br/>- **Expectation Expression**<br>- **On Violation Action** |
 
+### Schedule Options
+
+Schedule Options is available only when Schedule Refresh toggle is True
+
+| **Option** | **Description** |
+|------------|----------------|
+|**Task Schedule**| Options in Task Schedule<br/>- Periodic Schedule<br/>- CRON    |
+|**Schedule refesh-time period**|Available when Task Schedule is Set to Periodic Schedule<br/>Options in Schedule refesh-time period<br/>-Every Hours<br/>-Every Days<br/>-Every Weeks |
+|**Specific interval of periodic refresh(integer value)**|Available when Task Schedule is Set to Periodic Schedule |
+|**CRON string**|Available when Task Schedule is Set to CRON|
+|**CRON TIME ZONE**|Available when Task Schedule is Set to CRON |
+
 ## **DLT Deployment**
 
-### **DLT Initial Deployment**
-
-When deployed for the first time into an environment the Work node of materialization type table will execute the below stage:
-
-| **Stage** | **Description** |
-|-----------|----------------|
-| **Create Streaming Table** | This will execute a CREATE OR REPLACE statement and create a table in the target environment |
-
-### **DLT Redeployment**
-
-If the initial deployment failed,then the redeployment after correcting
-any errors successfully deploys the node.
-
-Other scenarios like change in data type,drop or add columns are not
-supported
-
-### **DLT Undeployment**
-
-If a DLT Node is deleted from a Workspace, that Workspace is committed
-to Git and that commit deployed to a higher level environment then the
-Table in the target environment will be dropped.
-
-This is executed in two stages:
+### Initial Deployment
+When deployed for the first time into an environment DLT node will execute three stages:
 
 | **Stage** | **Description** |
 |-----------|----------------|
-| **Delete Table** | Coalesce Internal table is dropped |
-| **Delete Table** | Target table in Databricks is dropped |
+| **Create Streaming table** | This stage will execute a CREATE OR REPLACE statement and create a Streaming table in the target environment |
+
+### Redeployment
+
+After the Streaming table has deployed for the first time into a target environment, subsequent deployments may result in either altering the Streaming table or recreating the Streaming table.
+
+If a Streaming table is to be altered this will run the following stage:
+
+#### Altering the Streaming table
+
+The following config changes trigger ALTER statements:
+
+1. Add schedule
+2. Alter schedule
+3. Drop schedule
+
+These execute the two stages:
+
+| **Stage** | **Description** |
+|-----------|----------------|
+| **Alter Streaming table** | Executes ALTER to modify parameters |
+
+#### Recreating the Streaming table
+
+If anything changes other than the configuration options specified above then the Streaming table will be recreated by running a CREATE OR REPLACE statement.
+
+### Undeployment
+
+If a Streaming table is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the Streaming table in the target environment will be dropped.
+
+This is executed as a single stage:
+
+| **Stage** | **Description** |
+|-----------|----------------|
+| **Drop Streaming table** | Removes the Streaming table |
 
 ## Code
 
