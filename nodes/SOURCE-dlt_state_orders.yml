@@ -1,0 +1,114 @@
+fileVersion: 1
+id: a1273e60-35c1-459e-baee-6eda81040d1c
+name: dlt_state_orders
+operation:
+  config:
+    DLTtype: STREAMING TABLE
+    constraints: false
+    constraintsspec:
+      items:
+        - {}
+    delimiter: ""
+    fileformat: ""
+    fileloc: ""
+    foreign: false
+    foreignkeycon:
+      items:
+        - {}
+    foreignkeyname: ""
+    header: false
+    inccolumns: false
+    parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
+    partclause: false
+    partitionclause:
+      items:
+        - {}
+    primary: false
+    primarykeycon:
+      items:
+        - {}
+    primarykeyname: ""
+    readfiles: false
+    refreshstream: false
+    tableconstraints: false
+    tblproperties: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: STREAMING TABLE
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 49903d62-73e4-463a-a233-659b8747f7d9
+          stepCounter: a1273e60-35c1-459e-baee-6eda81040d1c
+        config: {}
+        dataType: STRING
+        description: ""
+        name: order_datetime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6434bb9e-b253-4623-a05f-cb255b9136a6
+                stepCounter: 27b956a0-6c9a-4a96-9d70-f9a4aef1e6cb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3434c97e-96bf-400f-83b6-819b6e69a64e
+          stepCounter: a1273e60-35c1-459e-baee-6eda81040d1c
+        config: {}
+        dataType: STRING
+        description: ""
+        name: _c4
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 94de1feb-2dc1-486c-b0b5-083079aa3e47
+                stepCounter: 27b956a0-6c9a-4a96-9d70-f9a4aef1e6cb
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40d4558f-a99c-4bc0-823c-70321240713d
+          stepCounter: a1273e60-35c1-459e-baee-6eda81040d1c
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: order_count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: count(*)
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          dlt_ordersample_custsample: 27b956a0-6c9a-4a96-9d70-f9a4aef1e6cb
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: dlt_ordersample_custsample
+        join:
+          joinCondition: |-
+            FROM {{ ref('SOURCE', 'dlt_ordersample_custsample') }} `dlt_ordersample_custsample`
+            group by `order_datetime`,`_c4`
+        name: dlt_state_orders
+        noLinkRefs: []
+  name: dlt_state_orders
+  overrideSQL: false
+  schema: ""
+  sqlType: "368"
+  type: sql
+  version: 1
+type: Node

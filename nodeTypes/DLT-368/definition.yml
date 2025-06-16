@@ -14,15 +14,23 @@ metadata:
     isColumnResyncEnabled: true
 
     config:
-        - groupName: DLT Options
+        - groupName: General options
           items:
+          
           - displayName: Type of Delta Live Table
             attributeName: DLTtype
             type: materializationSelector
             default: STREAMING TABLE
             options:
             - STREAMING TABLE
-            enableIf: "true"
+            enableIf: "true"  
+          
+          - displayName: Schedule refresh
+            attributeName: schedulerefresh
+            type: toggleButton
+
+        - groupName: DLT Options
+          items:
 
           - displayName: Read from files
             attributeName: readfiles
@@ -65,11 +73,6 @@ metadata:
           - displayName: Table properties
             attributeName: tblproperties
             type: textBox
-          
-          - displayName: Refresh streaming tables
-            attributeName: refreshstream
-            type: toggleButton
-            default: false
           
           - type: toggleButton
             displayName: Partition by 
@@ -178,6 +181,50 @@ metadata:
           
             isRequired: false
             enableIf: "{% if config.constraints %} true {% else %} false {% endif %}"
+
+        - groupName: Schedule Options
+          enableIf: "{% if (config.schedulerefresh ) %} true {% else %} false {% endif %}"
+          items:
+
+          - displayName: Task Schedule
+            attributeName: schedulePeriodOption
+            type: dropdownSelector
+            options:
+            - Periodic schedule
+            - CRON
+      
+          - displayName: CRON string
+            attributeName: cron
+            type: textBox
+            enableIf: "{% if (config.schedulePeriodOption =='CRON' ) %} true {% else %} false {% endif %}"
+
+          - displayName: CRON TIME ZONE
+            attributeName: crontz
+            type: textBox
+            enableIf: "{% if (config.schedulePeriodOption =='CRON' ) %} true {% else %} false {% endif %}"
+          
+          - displayName: Schedule refesh-time period
+            attributeName: tp
+            options:
+            - EVERY HOURS
+            - EVERY DAYS
+            - EVERY WEEKS
+            type: dropdownSelector
+            enableIf: "{% if (config.schedulePeriodOption == 'Periodic schedule' and config.schedulePeriodOption !='CRON') %} true {% else %} false {% endif %}"
+
+          - displayName: Specific interval of periodic refresh(integer value)
+            type: label
+            enableIf: "{% if (config.schedulePeriodOption == 'Periodic schedule' and config.schedulePeriodOption !='CRON') %} true {% else %} false {% endif %}"
+
+
+          - displayName: HOUR OR HOURS 1 <= H <= 72  
+                         DAY  OR DAYS 1<= D <= 31
+                         WEEK OR WEEKS 1 <= W <= 8
+            attributeName: tph
+            type: textBox
+            enableIf: "{% if (config.schedulePeriodOption == 'Periodic schedule' and config.schedulePeriodOption !='CRON') %} true {% else %} false {% endif %}"
+
+
 
 name: DLT
 type: NodeType
