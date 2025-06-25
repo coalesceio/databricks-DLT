@@ -75,7 +75,7 @@ There are four configs within the **Node Properties** group.
 | **Refresh Stream**               | Enables full refresh of the table if any changes in structure occur. |
 | **Partition By** | Specifies the columns used for partitioning the streaming table. |
 | **Table Constraints** | - **Primary Key**<br/>- **Foreign Key** |
-| **Other Constraints** | - **Column Name**<br/>- **Expectation Expression**<br>- **On Violation Action** |
+| **Other Constraints** | - **Column Name**<br/>- **Expectation Expression**<br/>- **On Violation Action** |
 
 ### Schedule Options
 
