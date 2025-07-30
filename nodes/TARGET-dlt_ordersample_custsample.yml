@@ -14,7 +14,7 @@ operation:
     foreign: false
     foreignkeycon:
       items:
-        - {}
+        - foreignkey: null
     foreignkeyname: ""
     header: false
     inccolumns: false
@@ -22,14 +22,15 @@ operation:
     partclause: false
     partitionclause:
       items:
-        - {}
+        - partname: null
     primary: false
     primarykeycon:
       items:
-        - {}
+        - primarykey: null
     primarykeyname: ""
     readfiles: false
     refreshstream: false
+    schedulerefresh: false
     tableconstraints: false
     tblproperties: ""
   database: ""
@@ -68,20 +69,6 @@ operation:
           - columnReferences:
               - columnCounter: af192262-9a1a-4c47-b1da-591394bed53a
                 stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2281cc4a-449b-46a3-88d3-034fc671e432
-          stepCounter: 27b956a0-6c9a-4a96-9d70-f9a4aef1e6cb
-        config: {}
-        dataType: STRING
-        description: ""
-        name: _c0
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 355ae987-1adb-4526-9713-6affd0dd5b4c
-                stepCounter: 6caee3c7-c9c7-4380-998f-1a79a4ea2a53
             transform: ""
       - appliedColumnTests: {}
         columnReference:

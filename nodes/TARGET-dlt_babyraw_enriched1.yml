@@ -38,6 +38,7 @@ operation:
     primarykeyname: ""
     readfiles: false
     refreshstream: false
+    schedulerefresh: false
     tableconstraints: false
     tblproperties: "\"quality\"=\"silver\""
   database: ""

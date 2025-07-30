@@ -29,6 +29,7 @@ operation:
     primarykeyname: ""
     readfiles: false
     refreshstream: false
+    schedulerefresh: false
     tableconstraints: false
     tblproperties: ""
   database: ""
@@ -36,7 +37,7 @@ operation:
   description: New York popular baby first name data cleaned and prepared for analysis.
   isMultisource: false
   locationName: TARGET
-  materializationType: table
+  materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
     columns:

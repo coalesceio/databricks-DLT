@@ -5,9 +5,9 @@ metadata:
   defaultStorageLocation: null
   error: null
   nodeMetadataSpec: |+
-    capitalized: dlt
-    short: dlt
-    plural: Delta Live Tables
+    capitalized: ldp
+    short: ldp
+    plural: Lakeflow Declarative Principles
     tagColor: '#35D491'
 
     deployStrategy: advanced
@@ -17,7 +17,7 @@ metadata:
         - groupName: General options
           items:
           
-          - displayName: Type of Delta Live Table
+          - displayName: Type of Lakeflow Declarative Pipeline
             attributeName: DLTtype
             type: materializationSelector
             default: STREAMING TABLE
@@ -29,7 +29,7 @@ metadata:
             attributeName: schedulerefresh
             type: toggleButton
 
-        - groupName: DLT Options
+        - groupName: LDP Options
           items:
 
           - displayName: Read from files
@@ -226,5 +226,5 @@ metadata:
 
 
 
-name: DLT
+name: LDP
 type: NodeType
