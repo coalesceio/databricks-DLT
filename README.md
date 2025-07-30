@@ -2,47 +2,35 @@
 
 ## **Introduction**
 
-The Coalesce DLT node type allows you to create a streaming table,a type
-of Delta Live Table.
+The Coalesce LDP node type allows you to create a streaming table.
+A streaming table is a form of Unity Catalog managed table that is also a streaming target for Lakeflow Declarative Pipelines.
 
-[Delta Live Tables](https://docs.databricks.com/aws/en/dlt/streaming-tables)
-is a declarative framework for building reliable, maintainable, and
-testable data processing pipelines. Delta Live Tables manages how your
-data is transformed based on queries you define for each processing
-step. You can also enforce data quality with Delta Live Tables
-expectations, which allow you to define expected data quality and
-specify how to handle records that fail those expectations.
+[Lake Declarative Principles](https://docs.databricks.com/aws/en/dlt/concepts)
+is a declarative framework for developing and running batch and streaming data pipelines in SQL and Python. Lakeflow Declarative Pipelines runs on the performance-optimized Databricks Runtime (DBR), and the Lakeflow Declarative Pipelines flows API uses the same DataFrame API as Apache Spark and Structured Streaming. Common use cases for Lakeflow Declarative Pipelines include incremental data ingestion from sources such as cloud storage (including Amazon S3, Azure ADLS Gen2, and Google Cloud Storage) and message buses (such as Apache Kafka, Amazon Kinesis, Google Pub/Sub, Azure EventHub, and Apache Pulsar), incremental batch and streaming transformations with stateless and stateful operators, and real-time stream processing between transactional stores like message buses and databases.
 
-Databricks recommends using streaming tables to ingest data using
-Databricks SQL. A [streaming
-table](https://docs.databricks.com/en/tables/streaming.html#additional-resources)
-is a table registered to Unity Catalog with extra support for streaming
-or incremental data processing. A Delta Live Tables pipeline is
-automatically created for each streaming table.
+A [streaming table](https://docs.databricks.com/aws/en/dlt/streaming-tables)is a Delta table with additional support for streaming or incremental data processing. A streaming table can be targeted by one or more flows in an ETL pipeline.
 
 ## **Key points**
 
-1.Loading file from external location/databricks managed volume/external volume is currently supported.
+1.Databricks by default creates tables with lowercase.Hence,it is better to keep table names in lowercase.[https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html](https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html)
 
-2.Databricks by default creates tables with lowercase.Hence,it is better to keep table names in lowercase.[https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html](https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html)
-
-3.The node which loads from a file creates a streaming table.For further processing,Re-Sync the columns in the mapping grid using Re-Sync columns button.
+2.The node which loads from a file creates a streaming table.For further processing,Re-Sync the columns in the mapping grid using Re-Sync columns button.
 The streaming table can be re-created with the Columns inferred using Include Columns Inferred option.
 
 ![dlt-resync](https://github.com/user-attachments/assets/8199536e-ef4d-4b24-ab69-ce8c89356938)
 
-4.The streaming tables can be recreated and refreshed if there is a need to drop the inferred columns or add transformations to columns inferred in previous step.The structure of the streaming table is refreshed only on enabling the 'Refresh Stream' Option
+3.The streaming tables can be recreated and refreshed if there is a need to drop the inferred columns or add transformations to columns inferred in previous step.The structure of the streaming table is refreshed only on enabling the 'Refresh Stream' Option
 
-### **DLT Node Configuration**
+### **LDP Node Configuration**
 
-The DLT has two configuration groups:
+The LDP has two configuration groups:
 
-* [DLT Node Properties](#dlt-node-properties)
+* [LDP Node Properties](#ldp-node-properties)
 * [General Options](#general-options)
-* [DLT Options](#dlt-options)
+* [LDP Options](#ldp-options)
 * [Schedule Options](#schedule-options)
 
-<h4 id="dlt-node-properties"> DLT Node Properties </h4>
+<h4 id="dlt-node-properties"> LDP Node Properties </h4>
 
 There are four configs within the **Node Properties** group.
 
@@ -60,7 +48,7 @@ There are four configs within the **Node Properties** group.
 | **Create As** | Choose materialization type-by default it is STREAMING TABLE  |
 |**Schedule refresh**| True / False toggle<br/>- **True**: Schedule Option will be visible<br/>- **False**:  Schedule Option will be disabled|
 
-<h4 id="dlt-options"> DLT options </h4>
+<h4 id="ldp-options"> LDP options </h4>
 
 | **Option**                     | **Description** |
 |----------------------------------|---------------|
@@ -89,7 +77,7 @@ Schedule Options is available only when Schedule Refresh toggle is True
 |**CRON string**|Available when Task Schedule is Set to CRON|
 |**CRON TIME ZONE**|Available when Task Schedule is Set to CRON |
 
-## **DLT Deployment**
+## **LDP Deployment**
 
 ### Initial Deployment
 When deployed for the first time into an environment DLT node will execute three stages:
