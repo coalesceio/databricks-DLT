@@ -1,4 +1,4 @@
-# **Delta Live Tables**
+# **Lake Declarative Principles**
 
 ## **Introduction**
 
