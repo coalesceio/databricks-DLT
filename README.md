@@ -52,7 +52,7 @@ There are four configs within the **Node Properties** group.
 
 | **Option**                     | **Description** |
 |----------------------------------|---------------|
-| **Type of Delta Live Table**     | - Streaming Table <br/>- Materialized View |
+| **Type of Lakeflow Declarative Pipeline**     | - Streaming Table |
 | **Read Files**                   | **True / False** toggle <br/>- **True**: Allows loading from an external cloud location into a streaming table.<br/>- **False**: Allows loading from a table source. |
 | **Include Columns Inferred**     | Enables recreating the streaming table with added transformations after syncing columns. |
 | **File Location** | External cloud location of the file. |
