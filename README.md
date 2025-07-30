@@ -8,7 +8,7 @@ A streaming table is a form of Unity Catalog managed table that is also a stream
 [Lakeflow Declarative Principles](https://docs.databricks.com/aws/en/dlt/concepts)
 is a declarative framework for developing and running batch and streaming data pipelines in SQL and Python. Lakeflow Declarative Pipelines runs on the performance-optimized Databricks Runtime (DBR), and the Lakeflow Declarative Pipelines flows API uses the same DataFrame API as Apache Spark and Structured Streaming. Common use cases for Lakeflow Declarative Pipelines include incremental data ingestion from sources such as cloud storage (including Amazon S3, Azure ADLS Gen2, and Google Cloud Storage) and message buses (such as Apache Kafka, Amazon Kinesis, Google Pub/Sub, Azure EventHub, and Apache Pulsar), incremental batch and streaming transformations with stateless and stateful operators, and real-time stream processing between transactional stores like message buses and databases.
 
-A [streaming table](https://docs.databricks.com/aws/en/dlt/streaming-tables)is a Delta table with additional support for streaming or incremental data processing. A streaming table can be targeted by one or more flows in an ETL pipeline.
+A [streaming table](https://docs.databricks.com/aws/en/dlt/streaming-tables) is a Delta table with additional support for streaming or incremental data processing. A streaming table can be targeted by one or more flows in an ETL pipeline.
 
 ## **Key points**
 
