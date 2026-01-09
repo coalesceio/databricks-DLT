@@ -10,7 +10,8 @@ operation:
         - {}
     delimiter: ""
     fileformat: json
-    fileloc: /databricks-datasets/retail-org/sales_orders
+    fileloc: /databricks-datasets/retail-org/sales_orders/
+    filepat: ""
     foreign: false
     foreignkeycon:
       items:
