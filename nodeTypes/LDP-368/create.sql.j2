@@ -340,7 +340,7 @@ CREATE OR REFRESH {{desiredState.config.DLTtype}}
     {%-endif%}  
     FROM {%if desiredState.config.DLTtype == 'STREAMING TABLE'%} STREAM {%endif%}    
     {%if desiredState.config.readfiles == true %} 
-       read_files('{{desiredState.config.fileloc}}',format=>'{{desiredState.config.fileformat}}'{%if desiredState.config.fileformat == 'csv'%},delimiter=>'{{desiredState.config.delimiter}}',header=> {%if desiredState.config.header == True %}true {%else%} false{%endif%}{%endif%});
+       read_files('{{desiredState.config.fileloc}}',format=>'{{desiredState.config.fileformat}}'{%if desiredState.config.filepat !=""%},pathGlobFilter =>'{{desiredState.config.filepat}}'{%endif%}{%if desiredState.config.fileformat == 'csv'%},delimiter=>'{{desiredState.config.delimiter}}',header=> {%if desiredState.config.header == True %}true {%else%} false{%endif%}{%endif%});
     {%else%}
     {{desiredState.sources[0].join|replace("FROM","")}}
     {%endif%}

@@ -1,0 +1,254 @@
+fileVersion: 1
+id: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+name: ldp_parquet
+operation:
+  config:
+    DLTtype: STREAMING TABLE
+    constraints: false
+    constraintsspec:
+      items:
+        - {}
+    cron: ""
+    crontz: ""
+    delimiter: ""
+    fileformat: parquet
+    fileloc: /Volumes/coalesce/target_de/target-gcp/parquet/
+    filepat: ""
+    foreign: false
+    foreignkeycon:
+      items:
+        - {}
+    foreignkeyname: ""
+    header: true
+    inccolumns: true
+    parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
+    partclause: false
+    partitionclause:
+      items:
+        - {}
+    primary: false
+    primarykeycon:
+      items:
+        - {}
+    primarykeyname: ""
+    readfiles: true
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    tableconstraints: false
+    tblproperties: ""
+    tp: ""
+    tph: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: STREAMING TABLE
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: eb1e3d1d-3843-49d7-be19-9a228d42015e
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: ProductID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f1f7d4c-4d84-4174-aecc-7ca8c3d44df1
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ProductName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3af642fc-82ea-4c3b-9b67-2281ea5b8725
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: SupplierID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ee3c7ea2-ebce-49d8-be4e-3be44ed964e4
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: CategoryID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 869e477d-e090-4935-902c-f322d05a9f5e
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: QuantityPerUnit
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad62fb57-b00d-4818-82f1-fb1665b6ff62
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: DOUBLE
+        defaultValue: ""
+        description: ""
+        name: UnitPrice
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 91a21fcd-54e6-45aa-9538-796e8778b537
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: UnitsInStock
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ef9f1e9b-f731-46d1-8a87-3bc50c528205
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: UnitsOnOrder
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d92a16f9-0c7c-4481-81ca-e7ddcebd8cfd
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: ReorderLevel
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98fb208f-f7af-44db-8002-cde9f0bf51ed
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: Discontinued
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a51b741-c54e-486d-80aa-0df6b474f0e0
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: ldp_parquet
+        noLinkRefs: []
+  name: ldp_parquet
+  overrideSQL: false
+  schema: ""
+  sqlType: "368"
+  type: sql
+  version: 1
+type: Node

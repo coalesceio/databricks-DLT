@@ -49,12 +49,22 @@ metadata:
             enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
             isRequired: false
 
+          - displayName: File name/File pattern
+            attributeName: filepat
+            type: textBox
+            enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
+            isRequired: false
+
           - displayName: File format
             attributeName: fileformat
             type: dropdownSelector
             options:
             - csv
             - json
+            - parquet
+            - avro
+            - orc
+            - text
             enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
             isRequired: false
           
