@@ -65,6 +65,7 @@ metadata:
             - avro
             - orc
             - text
+            - excel
             enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
             isRequired: false
           
@@ -191,6 +192,27 @@ metadata:
           
             isRequired: false
             enableIf: "{% if config.constraints %} true {% else %} false {% endif %}"
+        
+        - groupName: Schema Options
+          enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
+          items:
+
+          - displayName: Schema definition(Ex:'id int, ts timestamp, event string')
+            attributeName: schemaopt
+            type: textBox
+          
+          - displayName: Override inferred schema columns(Ex:'id int, amount decimal(10,2)')
+            attributeName: schemahints
+            type: textBox
+          
+          - displayName: Infer exact column types
+            attributeName: infercolumntypes
+            type: toggleButton
+          
+          - displayName: Partition Columns(Comma-separated list of Hive-style partition columns to include)
+            attributeName: partitioncolumns
+            type: textBox    
+          
 
         - groupName: Schedule Options
           enableIf: "{% if (config.schedulerefresh ) %} true {% else %} false {% endif %}"
