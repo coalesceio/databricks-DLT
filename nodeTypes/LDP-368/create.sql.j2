@@ -285,6 +285,79 @@ does not permit copying or modification for any other purpose.
 
 
 {# CreateSQL for Table #}
+{% set ns = namespace(format_options=[]) %}
+
+{# 1. Format Specific Options #}
+{% if desiredState.config.fileformat | lower == 'csv' %}
+    {% set csv_opts = [] %}
+    {% if desiredState.config.delimiter %}{% set _ = csv_opts.append("'delimiter' = '" ~ desiredState.config.delimiter ~ "'") %}{% endif %}
+    {% if desiredState.config.header is defined %}{% set _ = csv_opts.append("'header' = '" ~ (desiredState.config.header | string | lower) ~ "'") %}{% endif %}
+    {% if desiredState.config.mulline is defined %}{% set _ = csv_opts.append("'multiLine' = '" ~ (desiredState.config.mulline | string | lower) ~ "'") %}{% endif %}
+    {% if desiredState.config.comment %}{% set _ = csv_opts.append("'comment' = '" ~ desiredState.config.comment ~ "'") %}{% endif %}
+    {% if desiredState.config.skipRows %}{% set _ = csv_opts.append("'skipRows' = '" ~ desiredState.config.skipRows ~ "'") %}{% endif %}
+    {% if desiredState.config.quote %}{% set _ = csv_opts.append("'quote' = '" ~ desiredState.config.quote ~ "'") %}{% endif %}
+    {% if desiredState.config.escape %}{% set _ = csv_opts.append("'escape' = '" ~ desiredState.config.escape ~ "'") %}{% endif %}
+    {% if desiredState.config.ignoreLeadingWhiteSpace is defined %}{% set _ = csv_opts.append("'ignoreLeadingWhiteSpace' = '" ~ (desiredState.config.ignoreLeadingWhiteSpace | string | lower) ~ "'") %}{% endif %}
+    {% if desiredState.config.ignoreTrailingWhiteSpace is defined %}{% set _ = csv_opts.append("'ignoreTrailingWhiteSpace' = '" ~ (desiredState.config.ignoreTrailingWhiteSpace | string | lower) ~ "'") %}{% endif %}
+    {% if desiredState.config.nullvalue %}{% set _ = csv_opts.append("'nullValue' = '" ~ desiredState.config.nullvalue ~ "'") %}{% endif %}
+    {% if desiredState.config.dateFormat %}{% set _ = csv_opts.append("'dateFormat' = '" ~ desiredState.config.dateFormat ~ "'") %}{% endif %}
+    {% if desiredState.config.timestampFormat %}{% set _ = csv_opts.append("'timestampFormat' = '" ~ desiredState.config.timestampFormat ~ "'") %}{% endif %}
+    {% set ns.format_options = ns.format_options + csv_opts %}
+
+{% elif desiredState.config.fileformat | lower == 'json' %}
+    {% set json_opts = [] %}
+    {% if desiredState.config.mulline is defined %}{% set _ = json_opts.append("'multiLine' = '" ~ (desiredState.config.mulline | string | lower) ~ "'") %}{% endif %}
+    {% set ns.format_options = ns.format_options + json_opts %}
+
+{% elif desiredState.config.fileformat | lower == 'excel' %}
+    {% set excel_opts = [] %}
+    {% if desiredState.config.headerrows %}{% set _ = excel_opts.append("'headerRows' = '" ~ desiredState.config.headerrows ~ "'") %}{% endif %}
+    {% if desiredState.config.dataaddress %}{% set _ = excel_opts.append("'dataAddress' = '" ~ desiredState.config.dataaddress ~ "'") %}{% endif %}
+    {% set ns.format_options = ns.format_options + excel_opts %}
+
+{% elif desiredState.config.fileformat | lower == 'xml' %}
+    {% set xml_opts = [] %}
+    {% if desiredState.config.xmlrwTag %}{% set _ = xml_opts.append("'rowTag' = '" ~ desiredState.config.xmlrwTag ~ "'") %}{% endif %}
+    {% if desiredState.config.xmlvalTag %}{% set _ = xml_opts.append("'valueTag' = '" ~ desiredState.config.xmlvalTag ~ "'") %}{% endif %}
+    {% if desiredState.config.attributePrefix %}{% set _ = xml_opts.append("'attributePrefix' = '" ~ desiredState.config.attributePrefix ~ "'") %}{% endif %}
+    {% if desiredState.config.rowValidationXSDPath %}{% set _ = xml_opts.append("'rowValidationXSDPath' = '" ~ desiredState.config.rowValidationXSDPath ~ "'") %}{% endif %}
+    {% if desiredState.config.samplingRatio %}{% set _ = xml_opts.append("'samplingRatio' = '" ~ desiredState.config.samplingRatio ~ "'") %}{% endif %}
+    {% if desiredState.config.excludeAttribute is defined %}{% set _ = xml_opts.append("'excludeAttribute' = '" ~ (desiredState.config.excludeAttribute | string | lower) ~ "'") %}{% endif %}
+    {% if desiredState.config.ignoreSurroundingSpaces is defined %}{% set _ = xml_opts.append("'ignoreSurroundingSpaces' = '" ~ (desiredState.config.ignoreSurroundingSpaces | string | lower) ~ "'") %}{% endif %}
+    {% if desiredState.config.ignoreNamespace is defined %}{% set _ = xml_opts.append("'ignoreNamespace' = '" ~ (desiredState.config.ignoreNamespace | string | lower) ~ "'") %}{% endif %}
+    {% if desiredState.config.datetimeRebaseMode %}{% set _ = xml_opts.append("'datetimeRebaseMode' = '" ~ desiredState.config.datetimeRebaseMode ~ "'") %}{% endif %}
+    {% if desiredState.config.int96ebaseMode %}{% set _ = xml_opts.append("'int96RebaseMode' = '" ~ desiredState.config.int96ebaseMode ~ "'") %}{% endif %}
+    {% if desiredState.config.nullvalue %}{% set _ = xml_opts.append("'nullValue' = '" ~ desiredState.config.nullvalue ~ "'") %}{% endif %}
+    {% set ns.format_options = ns.format_options + xml_opts %}
+
+{% elif desiredState.config.fileformat | lower == 'text' %}
+    {% set text_opts = [] %}
+    {% if desiredState.config.lineSep %}{% set _ = text_opts.append("'lineSep' = '" ~ desiredState.config.lineSep ~ "'") %}{% endif %}
+    {% if desiredState.config.wholeText %}{% set _ = text_opts.append("'wholeText' = '" ~ (desiredState.config.wholeText | string | lower) ~ "'") %}{% endif %}
+    {% set ns.format_options = ns.format_options + text_opts %}
+
+{% elif desiredState.config.fileformat | lower == 'avro' %}
+    {% if desiredState.config.aschemaopt %}{% set _ = ns.format_options.append("'avroSchema' = '" ~ desiredState.config.aschemaopt ~ "'") %}{% endif %}
+    {% if desiredState.config.datetimeRebaseMode %}{% set _ = ns.format_options.append("'datetimeRebaseMode' = '" ~ desiredState.config.datetimeRebaseMode ~ "'") %}{% endif %}
+
+{% elif desiredState.config.fileformat | lower == 'parquet' %}
+    {% if desiredState.config.datetimeRebaseMode %}{% set _ = ns.format_options.append("'datetimeRebaseMode' = '" ~ desiredState.config.datetimeRebaseMode ~ "'") %}{% endif %}
+    {% if desiredState.config.int96ebaseMode %}{% set _ = ns.format_options.append("'int96RebaseMode' = '" ~ desiredState.config.int96ebaseMode ~ "'") %}{% endif %}
+{% endif %}
+
+{# 2. Common & Advanced Options #}
+{% set common_opts = [] %}
+{% if desiredState.config.encoding %}{% set _ = common_opts.append("'encoding' = '" ~ desiredState.config.encoding ~ "'") %}{% endif %}
+{% if desiredState.config.rescuedDataColumn %}{% set _ = common_opts.append("'rescuedDataColumn' = '" ~ desiredState.config.rescuedDataColumn ~ "'") %}{% endif %}
+{% if desiredState.config.mergeSchema is defined %}{% set _ = common_opts.append("'mergeSchema' = '" ~ (desiredState.config.mergeSchema | string | lower) ~ "'") %}{% endif %}
+{% if desiredState.config.infercolumntypes is defined %}{% set _ = common_opts.append("'inferSchema' = '" ~ (desiredState.config.infercolumntypes | string | lower) ~ "'") %}{% endif %}
+{% if desiredState.config.igcorfiles is defined %}{% set _ = common_opts.append("'ignoreCorruptFiles' = '" ~ (desiredState.config.igcorfiles | string | lower) ~ "'") %}{% endif %}
+{% if desiredState.config.igmisfiles is defined %}{% set _ = common_opts.append("'ignoreMissingFiles' = '" ~ (desiredState.config.igmisfiles | string | lower) ~ "'") %}{% endif %}
+{% if desiredState.config.recursiveFileLookup is defined %}{% set _ = common_opts.append("'recursiveFileLookup' = '" ~ (desiredState.config.recursiveFileLookup | string | lower) ~ "'") %}{% endif %}
+{% if desiredState.config.modifiedAfter %}{% set _ = common_opts.append("'modifiedAfter' = '" ~ desiredState.config.modifiedAfter ~ "'") %}{% endif %}
+{% if desiredState.config.modifiedBefore %}{% set _ = common_opts.append("'modifiedBefore' = '" ~ desiredState.config.modifiedBefore ~ "'") %}{% endif %}
+
+{% set ns.format_options = ns.format_options + common_opts %}
 
 {{ stage('CREATE '+ desiredState.config.DLTtype,true, "sql", "create" ) }}
 
@@ -340,7 +413,14 @@ CREATE OR REFRESH {{desiredState.config.DLTtype}}
     {%-endif%}  
     FROM {%if desiredState.config.DLTtype == 'STREAMING TABLE'%} STREAM {%endif%}    
     {%if desiredState.config.readfiles == true %} 
-       read_files('{{desiredState.config.fileloc}}',format=>'{{desiredState.config.fileformat}}'{%if desiredState.config.filepat !=""%},pathGlobFilter =>'{{desiredState.config.filepat}}'{%endif%}{%if desiredState.config.fileformat == 'csv'%},delimiter=>'{{desiredState.config.delimiter}}',header=> {%if desiredState.config.header == True %}true {%else%} false{%endif%}{%endif%});
+       read_files('{{desiredState.config.fileloc}}',
+       format=>'{{desiredState.config.fileformat}}'
+       {%if desiredState.config.filepat !=""%},pathGlobFilter =>'{{desiredState.config.filepat}}'{%endif%}
+       {%if desiredState.config.fileformat == 'csv'%},delimiter=>'{{desiredState.config.delimiter}}',
+       header=> {%if desiredState.config.header == True %}true {%else%} false{%endif%}
+       {%elif desiredState.config.fileformat == 'json'%}
+       
+       {%endif%});
     {%else%}
     {{desiredState.sources[0].join|replace("FROM","")}}
     {%endif%}
