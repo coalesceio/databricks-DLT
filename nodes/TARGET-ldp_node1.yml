@@ -1,0 +1,82 @@
+fileVersion: 1
+id: c4f7ffba-a6a7-48b4-a9a5-6cc499849a05
+name: ldp_node1
+operation:
+  config:
+    DLTtype: STREAMING TABLE
+    constraints: false
+    constraintsspec:
+      items:
+        - {}
+    cron: ""
+    crontz: ""
+    dataaddress: "1"
+    datetimeRebaseMode: LEGACY
+    delimiter: ""
+    fileformat: ""
+    fileloc: ""
+    filepat: ""
+    foreign: false
+    foreignkeycon:
+      items:
+        - {}
+    foreignkeyname: ""
+    header: false
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    inccolumns: false
+    infercolumntypes: false
+    mergeSchema: false
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
+    partclause: false
+    partitionclause:
+      items:
+        - {}
+    partitioncolumns: ""
+    primary: false
+    primarykeycon:
+      items:
+        - {}
+    primarykeyname: ""
+    readfiles: true
+    recursiveFileLookup: false
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: ""
+    tableconstraints: false
+    tblproperties: ""
+    tp: ""
+    tph: ""
+    useStrictGlobber: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: STREAMING TABLE
+  metadata:
+    appliedNodeTests: []
+    columns: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: ldp_node1
+        noLinkRefs: []
+  name: ldp_node1
+  overrideSQL: false
+  schema: ""
+  sqlType: "368"
+  type: sql
+  version: 1
+type: Node
