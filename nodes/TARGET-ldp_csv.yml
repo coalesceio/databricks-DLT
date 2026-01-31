@@ -1,0 +1,208 @@
+fileVersion: 1
+id: 843fb7ae-f696-4310-af55-8fd666b65128
+name: ldp_csv
+operation:
+  config:
+    DLTtype: STREAMING TABLE
+    aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
+    constraints: false
+    constraintsspec:
+      items:
+        - {}
+    cron: ""
+    crontz: ""
+    dataaddress: "1"
+    dateFormat: ""
+    datetimeRebaseMode: LEGACY
+    delimiter: "|"
+    encoding: UTF-8
+    escape: ""
+    excludeAttribute: false
+    fileformat: csv
+    fileloc: /Volumes/coalesce/target_de/target-gcp/
+    filepat: baby.csv
+    foreign: false
+    foreignkeycon:
+      items:
+        - {}
+    foreignkeyname: ""
+    header: false
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: false
+    ignoreSurroundingSpaces: false
+    ignoreTrailingWhiteSpace: false
+    inccolumns: true
+    infercolumntypes: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: false
+    mode: ""
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
+    parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
+    partclause: false
+    partitionclause:
+      items:
+        - {}
+    partitioncolumns: ""
+    primary: false
+    primarykeycon:
+      items:
+        - {}
+    primarykeyname: ""
+    quote: ""
+    readfiles: true
+    recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: ""
+    skipRows: ""
+    tableconstraints: false
+    tblproperties: ""
+    timestampFormat: ""
+    tp: ""
+    tph: ""
+    useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: STREAMING TABLE
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b2218565-6aa1-4573-a0e3-4b2f2c01fa20
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Year
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2aae20f5-cab3-4559-aa8b-502dfee6a8a9
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FirstName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9b48358-c341-4cf9-8a5f-a1cf7a678eac
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: County
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e4ead25-2dbb-49ef-82ac-5792cfc17ebc
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Sex
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3985d5ed-91cb-4812-861b-843b2276043e
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 58ccf5fe-bab4-46d0-88f6-c07d9bd6e94b
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: ldp_csv
+        noLinkRefs: []
+  name: ldp_csv
+  overrideSQL: false
+  schema: ""
+  sqlType: "368"
+  type: sql
+  version: 1
+type: Node

@@ -1,9 +1,17 @@
 fileVersion: 1
-id: c4f7ffba-a6a7-48b4-a9a5-6cc499849a05
-name: ldp_node1
+id: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+name: ldp_json
 operation:
   config:
     DLTtype: STREAMING TABLE
+    advfileforopt: false
+    advfileopt: false
+    allowComments: false
+    allowSingleQuotes: false
+    allowUnquotedFieldNames: false
+    aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
@@ -11,8 +19,13 @@ operation:
     cron: ""
     crontz: ""
     dataaddress: "1"
+    dateFormat: ""
     datetimeRebaseMode: LEGACY
     delimiter: ""
+    dropFieldIfAllNull: false
+    encoding: UTF-8
+    escape: ""
+    excludeAttribute: false
     fileformat: ""
     fileloc: ""
     filepat: ""
@@ -21,16 +34,24 @@ operation:
       items:
         - {}
     foreignkeyname: ""
-    header: false
+    header: true
     headerrows: "1"
     igcorfiles: false
     igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: false
+    ignoreSurroundingSpaces: false
+    ignoreTrailingWhiteSpace: false
     inccolumns: false
     infercolumntypes: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
     mergeSchema: false
+    mode: LEGACY
     modifiedAfter: ""
     modifiedBefore: ""
     mulline: true
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
@@ -42,17 +63,27 @@ operation:
       items:
         - {}
     primarykeyname: ""
+    primitivesAsString: false
+    quote: ""
     readfiles: true
     recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
     schemaopt: ""
+    skipRows: ""
     tableconstraints: false
     tblproperties: ""
+    timestampFormat: ""
     tp: ""
     tph: ""
     useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""
@@ -71,9 +102,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_node1
+        name: ldp_json
         noLinkRefs: []
-  name: ldp_node1
+  name: ldp_json
   overrideSQL: false
   schema: ""
   sqlType: "368"
