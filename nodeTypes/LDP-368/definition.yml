@@ -268,7 +268,7 @@ metadata:
             isRequired: false
             
           - displayName: Header added
-            attributeName: header
+            attributeName: headers
             type: toggleButton
             enableIf: "{% if config.readfiles and config.fileformat in ('csv') %} true {% else %} false {% endif %}"
             default: true

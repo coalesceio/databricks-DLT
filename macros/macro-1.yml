@@ -13,7 +13,7 @@ macroString: |2
   {% if desiredState.config.fileformat | lower == 'csv' %}
       {% set csv_opts = [] %}
       {% if desiredState.config.delimiter != '' %}{% set _ = csv_opts.append("delimiter => '" ~ desiredState.config.delimiter ~ "'") %}{% endif %}
-      {% if desiredState.config.header is defined and desiredState.config.header != '' %}{% set _ = csv_opts.append("header => '" ~ (desiredState.config.header | string | lower) ~ "'") %}{% endif %}
+      {% if desiredState.config.headers is defined and desiredState.config.headers != '' %}{% set _ = csv_opts.append("header => '" ~ (desiredState.config.headers | string | lower) ~ "'") %}{% endif %}
       {% if desiredState.config.mulline is defined %}{% set _ = csv_opts.append("multiLine => '" ~ (desiredState.config.mulline | string | lower) ~ "'") %}{% endif %}
       {% if desiredState.config.comment != '' %}{% set _ = csv_opts.append("comment => '" ~ desiredState.config.comment ~ "'") %}{% endif %}
       {% if desiredState.config.skipRows != '' %}{% set _ = csv_opts.append("skipRows => '" ~ desiredState.config.skipRows ~ "'") %}{% endif %}
@@ -21,7 +21,6 @@ macroString: |2
       {% if desiredState.config.escape != ''%}{% set _ = csv_opts.append("escape => '" ~ desiredState.config.escape ~ "'") %}{% endif %}
       {% if desiredState.config.mode is defined and desiredState.config.mode != '' %}{% set _ = csv_opts.append("mode => '" ~ desiredState.config.mode~ "'") %}{% endif %}
       {% if desiredState.config.ignoreLeadingWhiteSpace is defined %}{% set _ = csv_opts.append("ignoreLeadingWhiteSpace => '" ~ (desiredState.config.ignoreLeadingWhiteSpace | string | lower) ~ "'") %}{% endif %}
-
       {% if desiredState.config.ignoreTrailingWhiteSpace is defined %}{% set _ = csv_opts.append("ignoreTrailingWhiteSpace => '" ~ (desiredState.config.ignoreTrailingWhiteSpace | string | lower) ~ "'") %}{% endif %}
 
       {% if desiredState.config.nullvalue != '' %}{% set _ = csv_opts.append("nullValue => '" ~ desiredState.config.nullvalue ~ "'") %}{% endif %}

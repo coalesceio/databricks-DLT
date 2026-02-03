@@ -1,11 +1,14 @@
 fileVersion: 1
-id: 843fb7ae-f696-4310-af55-8fd666b65128
-name: ldp_csv
+id: 3c6a7eb9-5075-4dfe-9149-95166fb01b55
+name: ldp_node1
 operation:
   config:
     DLTtype: STREAMING TABLE
-    advfileforopt: true
-    advfileopt: true
+    advfileforopt: false
+    advfileopt: false
+    allowComments: false
+    allowSingleQuotes: false
+    allowUnquotedFieldNames: false
     aschemaopt: ""
     attributePrefix: ""
     comment: ""
@@ -18,19 +21,20 @@ operation:
     dataaddress: "1"
     dateFormat: ""
     datetimeRebaseMode: LEGACY
-    delimiter: "|"
+    delimiter: ""
+    dropFieldIfAllNull: false
     encoding: UTF-8
     escape: ""
     excludeAttribute: false
-    fileformat: csv
-    fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: baby.csv
+    fileformat: ""
+    fileloc: ""
+    filepat: ""
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
-    header: false
+    header: true
     headerrows: "1"
     igcorfiles: false
     igmisfiles: false
@@ -43,7 +47,7 @@ operation:
     int96ebaseMode: LEGACY
     lineSep: ""
     mergeSchema: false
-    mode: ""
+    mode: LEGACY
     modifiedAfter: ""
     modifiedBefore: ""
     mulline: true
@@ -59,8 +63,9 @@ operation:
       items:
         - {}
     primarykeyname: ""
+    primitivesAsString: false
     quote: ""
-    readfiles: true
+    readfiles: false
     recursiveFileLookup: false
     rescuedDataColumn: ""
     rowValidationXSDPath: ""
@@ -97,9 +102,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_csv
+        name: ldp_node1
         noLinkRefs: []
-  name: ldp_csv
+  name: ldp_node1
   overrideSQL: false
   schema: ""
   sqlType: "368"

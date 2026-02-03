@@ -4,6 +4,8 @@ name: ldp_avro
 operation:
   config:
     DLTtype: STREAMING TABLE
+    advfileforopt: true
+    advfileopt: true
     constraints: false
     constraintsspec:
       items:
@@ -20,12 +22,14 @@ operation:
         - {}
     foreignkeyname: ""
     header: false
-    inccolumns: true
+    inccolumns: false
+    mergeSchema: true
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
       items:
         - {}
+    partitioncolumns: ""
     primary: false
     primarykeycon:
       items:
@@ -34,6 +38,8 @@ operation:
     readfiles: true
     schedulePeriodOption: ""
     schedulerefresh: false
+    schemahints: ""
+    schemaopt: ""
     tableconstraints: false
     tblproperties: ""
     tp: ""
