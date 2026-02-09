@@ -1,11 +1,11 @@
 fileVersion: 1
-id: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
-name: ldp_json
+id: 3c6a7eb9-5075-4dfe-9149-95166fb01b55
+name: ldp_xml
 operation:
   config:
     DLTtype: STREAMING TABLE
-    advfileforopt: true
-    advfileopt: true
+    advfileforopt: false
+    advfileopt: false
     allowComments: false
     allowSingleQuotes: false
     allowUnquotedFieldNames: false
@@ -26,9 +26,9 @@ operation:
     encoding: UTF-8
     escape: ""
     excludeAttribute: false
-    fileformat: json
+    fileformat: xml
     fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: employees.json
+    filepat: books.xml
     foreign: false
     foreignkeycon:
       items:
@@ -82,8 +82,8 @@ operation:
     tph: ""
     useStrictGlobber: false
     wholeText: ""
-    xmlrwTag: ""
-    xmlvalTag: ""
+    xmlrwTag: catalog
+    xmlvalTag: book
   database: ""
   deployEnabled: true
   description: ""
@@ -102,9 +102,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_json
+        name: ldp_xml
         noLinkRefs: []
-  name: ldp_json
+  name: ldp_xml
   overrideSQL: false
   schema: ""
   sqlType: "368"

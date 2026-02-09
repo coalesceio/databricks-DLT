@@ -182,6 +182,7 @@ metadata:
             - orc
             - text
             - excel
+            - xml
             enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
             isRequired: false 
 
@@ -249,7 +250,7 @@ metadata:
           
           - displayName: Number of Header Rows
             attributeName: headerrows 
-            type: textBox
+            type: toggleButton
             enableIf: "{% if (config.fileformat in ('excel'))%} true {% else %} false {% endif %}"
             default: "1"
             isRequired: false

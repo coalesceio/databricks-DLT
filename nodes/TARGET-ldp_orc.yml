@@ -1,6 +1,6 @@
 fileVersion: 1
 id: e93f43bd-5b58-40aa-872d-a4c262494d1a
-name: ldp_node
+name: ldp_orc
 operation:
   config:
     DLTtype: STREAMING TABLE
@@ -10,18 +10,21 @@ operation:
         - {}
     cron: ""
     crontz: ""
+    dataaddress: "1"
     delimiter: ""
-    fileformat: ""
-    fileloc: ""
-    filepat: ""
+    fileformat: orc
+    fileloc: /Volumes/coalesce/target_de/target-gcp/
+    filepat: snappy.orc
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
     header: false
+    igcorfiles: true
     inccolumns: false
     infercolumntypes: false
+    lineSep: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
@@ -33,7 +36,7 @@ operation:
       items:
         - {}
     primarykeyname: ""
-    readfiles: false
+    readfiles: true
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
@@ -42,6 +45,9 @@ operation:
     tblproperties: ""
     tp: ""
     tph: ""
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""
@@ -60,9 +66,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_node
+        name: ldp_orc
         noLinkRefs: []
-  name: ldp_node
+  name: ldp_orc
   overrideSQL: false
   schema: ""
   sqlType: "368"

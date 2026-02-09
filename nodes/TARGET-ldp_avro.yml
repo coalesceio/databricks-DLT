@@ -6,12 +6,14 @@ operation:
     DLTtype: STREAMING TABLE
     advfileforopt: true
     advfileopt: true
+    aschemaopt: ""
     constraints: false
     constraintsspec:
       items:
         - {}
     cron: ""
     crontz: ""
+    datetimeRebaseMode: LEGACY
     delimiter: ""
     fileformat: avro
     fileloc: /Volumes/coalesce/target_de/target-gcp/
@@ -36,6 +38,7 @@ operation:
         - {}
     primarykeyname: ""
     readfiles: true
+    rescuedDataColumn: ""
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""

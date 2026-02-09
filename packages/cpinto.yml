@@ -1,0 +1,13 @@
+config:
+  entities:
+    nodeTypes:
+      "531":
+        defaultStorageLocation: null
+        isDisabled: false
+  packageVariables: ""
+fileVersion: 1
+id: "@coalesce/databricks/external-data-package"
+name: cpinto
+packageID: "@coalesce/databricks/external-data-package"
+releaseID: cbd618f6-eecd-4f48-bfe5-f7451eedd911
+type: Package
