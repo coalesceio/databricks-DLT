@@ -16,14 +16,19 @@ operation:
               {"name": "ts", "type": {"type": "long", "logicalType": "timestamp-micros"}}
             ]
           }
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
         - {}
     cron: ""
     crontz: ""
+    dateFormat: ""
     datetimeRebaseMode: LEGACY
     delimiter: ""
+    encoding: UTF-8
+    escape: ""
     fileformat: avro
     fileloc: /Volumes/coalesce/target_de/target-gcp/
     filepat: twitter.avro
@@ -34,7 +39,13 @@ operation:
     foreignkeyname: ""
     header: false
     inccolumns: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
     mergeSchema: true
+    mode: PERMISSIVE
+    modifiedAfter: ""
+    modifiedBefore: ""
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
@@ -46,16 +57,23 @@ operation:
       items:
         - {}
     primarykeyname: ""
+    quote: ""
     readfiles: true
     rescuedDataColumn: Incompatible_values
+    rowValidationXSDPath: ""
+    samplingRatio: ""
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
     schemaopt: ""
+    skipRows: ""
     tableconstraints: false
     tblproperties: ""
+    timestampFormat: ""
     tp: ""
     tph: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""

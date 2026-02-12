@@ -16,11 +16,11 @@ operation:
     cron: ""
     crontz: ""
     dataaddress: "1"
-    dateFormat: ""
+    dateFormat: yyyy-MM-dd
     datetimeRebaseMode: LEGACY
     delimiter: ","
     encoding: UTF-8
-    escape: ""
+    escape: \\
     excludeAttribute: false
     fileformat: csv
     fileloc: /Volumes/coalesce/target_de/target-gcp/
@@ -72,7 +72,7 @@ operation:
     skipRows: ""
     tableconstraints: false
     tblproperties: ""
-    timestampFormat: ""
+    timestampFormat: yyyy-MM-dd HH:mm:ss
     tp: ""
     tph: ""
     useStrictGlobber: false

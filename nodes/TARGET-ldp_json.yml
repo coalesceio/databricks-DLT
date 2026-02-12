@@ -4,8 +4,8 @@ name: ldp_json
 operation:
   config:
     DLTtype: STREAMING TABLE
-    advfileforopt: true
-    advfileopt: true
+    advfileforopt: false
+    advfileopt: false
     allowComments: false
     allowSingleQuotes: false
     allowUnquotedFieldNames: false

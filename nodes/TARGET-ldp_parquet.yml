@@ -244,23 +244,6 @@ operation:
           - columnReferences: []
             transform: ""
         transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2f9a2eee-bb40-4ada-adc1-924bfa56beef
-          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: _rescued_data
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

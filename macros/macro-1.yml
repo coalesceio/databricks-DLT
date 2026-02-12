@@ -30,8 +30,8 @@ macroString: |
   {%- elif desiredState.config.fileformat | lower == 'json' -%}
       {%- set json_opts = [] -%}
       {%- if desiredState.config.mulline is defined %}{% set _ = json_opts.append("multiLine => '" ~ (desiredState.config.mulline | string | lower) ~ "'") %}{% endif -%}
-      {%- if desiredState.config.dateFormat != '' %}{% set _ = json_opts.append("dateFormat => '" ~ desiredState.config.dateFormat ~ "'") %}{% endif -%}
-      {%- if desiredState.config.timestampFormat != '' %}{% set _ = json_opts.append("timestampFormat => '" ~ desiredState.config.timestampFormat ~ "'") %}{% endif -%}
+      {%- if desiredState.config.dateFormat != ''and desiredState.config.advfileforopt %}{% set _ = json_opts.append("dateFormat => '" ~ desiredState.config.dateFormat ~ "'") %}{% endif -%}
+      {%- if desiredState.config.timestampFormat != '' and desiredState.config.advfileforopt  %}{% set _ = json_opts.append("timestampFormat => '" ~ desiredState.config.timestampFormat ~ "'") %}{% endif -%}
       {%- if desiredState.config.mode is defined and desiredState.config.mode != ''and desiredState.config.advfileforopt%}{% set _ = json_opts.append("mode => '" ~ desiredState.config.mode~ "'") %}{% endif -%}
       {%- if desiredState.config.primitivesAsString is defined and desiredState.config.advfileforopt %}{% set _ = json_opts.append("primitivesAsString => '" ~ (desiredState.config.primitivesAsString | string | lower) ~ "'") %}{% endif -%}
       {%- if desiredState.config.allowComments is defined and desiredState.config.advfileforopt %}{% set _ = json_opts.append("allowComments => '" ~ (desiredState.config.allowComments | string | lower) ~ "'") %}{% endif -%}
@@ -78,13 +78,13 @@ macroString: |
   {%- endif -%}
 
   {# 2. Common & Advanced Options #}
-  {%- if desiredState.config.encoding %}{% set _ = ns.common_opts.append("encoding => '" ~ desiredState.config.encoding ~ "'") %}{% endif -%}
-  {%- if desiredState.config.rescuedDataColumn and desiredState.config.advfileforopt == true  %}{% set _ = ns.common_opts.append("rescuedDataColumn => '" ~ desiredState.config.rescuedDataColumn ~ "'") %}{% endif -%}
+  {%- if desiredState.config.encoding != '' and desiredState.config.advfileforopt == true %}{% set _ = ns.common_opts.append("encoding => '" ~ desiredState.config.encoding ~ "'") %}{% endif -%}
+  {%- if desiredState.config.rescuedDataColumn != '' and desiredState.config.advfileforopt == true  %}{% set _ = ns.common_opts.append("rescuedDataColumn => '" ~ desiredState.config.rescuedDataColumn ~ "'") %}{% endif -%}
   {%- if desiredState.config.mergeSchema is defined %}{% set _ = ns.common_opts.append("mergeSchema => '" ~ (desiredState.config.mergeSchema | string | lower) ~ "'") %}{% endif -%}
   {%- if desiredState.config.infercolumntypes is defined and desiredState.config.fileformat | lower != 'orc'%}{% set _ = ns.common_opts.append("inferSchema => '" ~ (desiredState.config.infercolumntypes | string | lower) ~ "'") %}{% endif -%}
-  {%- if desiredState.config.schemaopt != '' %}{% set _ = ns.common_opts.append("schema => '" ~ (desiredState.config.schemaopt | string | lower) ~ "'") %}{%- endif -%}
-  {%- if desiredState.config.partitioncolumns != ''%}{% set _ = ns.common_opts.append("partitionColumns => '" ~ (desiredState.config.partitioncolumns | string | lower) ~ "'") %}{%- endif -%}
-  {%- if desiredState.config.schemahints != ''%}{% set _ = ns.common_opts.append("schemaHints => '" ~ (desiredState.config.schemahints | string | lower) ~ "'") %}{%- endif -%}
+  {%- if desiredState.config.schemaopt | trim | length > 0 %}{% set _ = ns.common_opts.append("schema => '" ~ (desiredState.config.schemaopt | string | lower) ~ "'") %}{%- endif -%}
+  {%- if desiredState.config.partitioncolumns | trim | length > 0%}{% set _ = ns.common_opts.append("partitionColumns => '" ~ (desiredState.config.partitioncolumns | string | lower) ~ "'") %}{%- endif -%}
+  {%- if desiredState.config.schemahints | trim | length > 0%}{% set _ = ns.common_opts.append("schemaHints => '" ~ (desiredState.config.schemahints | string | lower) ~ "'") %}{%- endif -%}
   {%- if desiredState.config.igcorfiles is defined %}{% set _ = ns.common_opts.append("ignoreCorruptFiles => '" ~ (desiredState.config.igcorfiles | string | lower) ~ "'") %}{% endif -%}
   {%- if desiredState.config.igmisfiles is defined %}{% set _ = ns.common_opts.append("ignoreMissingFiles => '" ~ (desiredState.config.igmisfiles | string | lower) ~ "'") %}{% endif -%}
   {%- if desiredState.config.recursiveFileLookup is defined and desiredState.config.advfileopt == true%}{% set _ = ns.common_opts.append("recursiveFileLookup => '" ~ (desiredState.config.recursiveFileLookup | string | lower) ~ "'") %}{% endif -%}
