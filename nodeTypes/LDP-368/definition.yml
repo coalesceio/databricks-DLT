@@ -308,6 +308,7 @@ metadata:
             - EXCEPTION
             - LEGACY
             - CORRECTED
+            - ''
             enableIf: "{% if config.fileformat in ('avro','xml','parquet') %} true {% else %} false {% endif %}"
             default: LEGACY
 
@@ -319,6 +320,7 @@ metadata:
             - EXCEPTION
             - LEGACY
             - CORRECTED
+            - ''
             enableIf: "{% if config.fileformat in ('xml','parquet') %} true {% else %} false {% endif %}"
             default: LEGACY
            
