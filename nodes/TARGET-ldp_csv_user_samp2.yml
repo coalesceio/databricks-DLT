@@ -1,48 +1,90 @@
 fileVersion: 1
-id: b80b783d-9404-4285-9391-9b4b0e9d3d77
-name: dlt_babyraw
+id: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
+name: ldp_csv_user_samp2
 operation:
   config:
     DLTtype: STREAMING TABLE
+    advfileforopt: false
+    advfileopt: true
+    aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
         - {}
-    delimiter: "|"
+    cron: ""
+    crontz: ""
+    dataaddress: "1"
+    dateFormat: ""
+    datetimeRebaseMode: LEGACY
+    delimiter: ","
+    encoding: UTF-8
+    escape: ""
+    excludeAttribute: false
     fileformat: csv
     fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: baby.csv
+    filepat: users12.csv
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
-    header: true
-    inccolumns: true
+    header: false
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: false
+    ignoreSurroundingSpaces: false
+    ignoreTrailingWhiteSpace: false
+    inccolumns: false
+    infercolumntypes: true
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: true
+    mode: ""
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
       items:
         - {}
+    partitioncolumns: year
     primary: false
     primarykeycon:
       items:
         - {}
     primarykeyname: ""
+    quote: ""
     readfiles: true
-    refreshstream: false
-    schedulePeriodOption: Periodic schedule
-    schedulerefresh: true
+    recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: id int, Ts timestamp, Event string,Year INT
+    skipRows: ""
     tableconstraints: false
-    tblproperties: "\"quality\"=\"bronze\""
-    tp: EVERY DAYS
-    tph: "30"
+    tblproperties: ""
+    timestampFormat: ""
+    tp: ""
+    tph: ""
+    useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: TARGET
-  materializationType: table
+  materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
     columns:
@@ -51,64 +93,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ed26e60a-1da3-4b05-bd60-889669ea86e6
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: FirstName
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 96ad023c-3072-47e9-ace4-431f17f13d9f
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: County
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 024fca63-c9bf-45a7-89c1-2f760d5f83b4
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: Sex
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7b9d47ca-5bd8-429b-83a8-c0c616bece17
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 70004001-7136-4782-a40a-b6d371625eae
+          stepCounter: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
         config: {}
         dataType: INT
         defaultValue: ""
         description: ""
-        name: Count
+        name: id
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -119,13 +110,30 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 479ceac0-a689-4833-95ca-eacf20a89910
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 7d3a701a-c7ea-46b2-b662-3c9260450dab
+          stepCounter: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: ts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24cb4c34-e930-44e8-b986-ae9c798e9f5b
+          stepCounter: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: _rescued_data
+        name: event
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -136,13 +144,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 58529167-6beb-4bbe-bd46-bad0c5bb4828
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: c9de0803-ed42-4c6a-b77e-a192517b29bd
+          stepCounter: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
         config: {}
         dataType: INT
         defaultValue: ""
         description: ""
-        name: Year
+        name: year
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -157,9 +165,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: dlt_babyraw
+        name: ldp_csv_user_samp2
         noLinkRefs: []
-  name: dlt_babyraw
+  name: ldp_csv_user_samp2
   overrideSQL: false
   schema: ""
   sqlType: "368"

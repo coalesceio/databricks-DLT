@@ -1,42 +1,84 @@
 fileVersion: 1
-id: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
-name: dlt_ordersample
+id: 843fb7ae-f696-4310-af55-8fd666b65128
+name: ldp_csv
 operation:
   config:
     DLTtype: STREAMING TABLE
+    advfileforopt: true
+    advfileopt: true
+    aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
         - {}
-    delimiter: ""
-    fileformat: json
-    fileloc: /databricks-datasets/retail-org/sales_orders
-    filepat: ""
+    cron: ""
+    crontz: ""
+    dataaddress: "1"
+    dateFormat: ""
+    datetimeRebaseMode: LEGACY
+    delimiter: "|"
+    encoding: UTF-8
+    escape: ""
+    excludeAttribute: false
+    fileformat: csv
+    fileloc: /Volumes/coalesce/target_de/target-gcp/
+    filepat: baby.csv
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
     header: false
-    inccolumns: true
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: false
+    ignoreSurroundingSpaces: false
+    ignoreTrailingWhiteSpace: false
+    inccolumns: false
+    infercolumntypes: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: false
+    mode: ""
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
       items:
         - {}
+    partitioncolumns: ""
     primary: false
     primarykeycon:
       items:
         - {}
     primarykeyname: ""
+    quote: ""
     readfiles: true
-    refreshstream: false
-    schedulePeriodOption: Periodic schedule
-    schedulerefresh: true
+    recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: Year string,FirstName string,County string,Sex string,Count string
+    skipRows: ""
     tableconstraints: false
     tblproperties: ""
-    tp: EVERY WEEKS
-    tph: "7"
+    timestampFormat: ""
+    tp: ""
+    tph: ""
+    useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""
@@ -51,30 +93,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b01180ad-bc88-45d5-b4c2-d4af8636ca75
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
-        config: {}
-        dataType: ARRAY
-        defaultValue: ""
-        description: ""
-        name: clicked_items
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 60915bd8-df91-4de6-a832-aa8e6e21bd46
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
+          columnCounter: bf95975a-adfd-4f54-9600-672ba2475bd5
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: customer_id
+        name: Year
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -85,13 +110,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 760bf716-abfe-4d83-b73a-5ea9418db9d7
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
+          columnCounter: 557002a7-2fac-4692-bb35-520b7d39bf54
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: customer_name
+        name: FirstName
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -102,13 +127,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2b974e8f-60dc-418b-9c3d-0eeebbc9989c
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
+          columnCounter: 221ff88f-7eda-4b78-bad2-e9b2cdc1d675
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: number_of_line_items
+        name: County
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -119,13 +144,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5aed21ae-cd17-46f9-852d-cd078b4a93ae
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
+          columnCounter: 8a9ed562-3220-4c28-a44e-717080960dff
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: order_datetime
+        name: Sex
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -136,13 +161,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: af192262-9a1a-4c47-b1da-591394bed53a
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
+          columnCounter: f7fade84-492f-452c-afac-d7823d9594e2
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
         config: {}
-        dataType: LONG
+        dataType: STRING
         defaultValue: ""
         description: ""
-        name: order_number
+        name: Count
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -153,42 +178,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b768e3c8-19ad-45c5-8377-1b6fa91b2c5e
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
-        config: {}
-        dataType: ARRAY
-        defaultValue: ""
-        description: ""
-        name: ordered_products
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e2256ec1-9cc9-4f0a-82d6-8fc4d19d5cfc
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
-        config: {}
-        dataType: ARRAY
-        defaultValue: ""
-        description: ""
-        name: promo_info
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 461a32f7-ccec-4852-9b8b-01155834d320
-          stepCounter: 511aaad6-b0b3-4c7e-9b2c-5511013c9245
+          columnCounter: 373ddfb6-d5d8-4191-834f-91cf7b78a6ce
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -208,9 +199,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: dlt_ordersample
+        name: ldp_csv
         noLinkRefs: []
-  name: dlt_ordersample
+  name: ldp_csv
   overrideSQL: false
   schema: ""
   sqlType: "368"

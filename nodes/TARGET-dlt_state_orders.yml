@@ -81,7 +81,6 @@ operation:
         dataType: INT
         defaultValue: ""
         description: ""
-        keyColumnType: None
         name: order_count
         nullable: true
         sourceColumnReferences:
@@ -89,7 +88,6 @@ operation:
               - columnCounter: "0"
                 stepCounter: "0"
             transform: count(*)
-        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

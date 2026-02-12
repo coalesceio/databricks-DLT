@@ -1,48 +1,85 @@
 fileVersion: 1
-id: b80b783d-9404-4285-9391-9b4b0e9d3d77
-name: dlt_babyraw
+id: 10833ff8-467c-49b0-a403-303a3064f38a
+name: ldp_avro_schema
 operation:
   config:
     DLTtype: STREAMING TABLE
+    advfileforopt: true
+    advfileopt: true
+    aschemaopt: |-
+      {
+            "type": "record",
+            "name": "TwitterRecord",
+            "fields": [
+              {"name": "username", "type": "string"},
+              {"name": "tweet", "type": "string"},
+              {"name": "ts", "type": {"type": "long", "logicalType": "timestamp-micros"}}
+            ]
+          }
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
         - {}
-    delimiter: "|"
-    fileformat: csv
+    cron: ""
+    crontz: ""
+    dateFormat: ""
+    datetimeRebaseMode: LEGACY
+    delimiter: ""
+    encoding: UTF-8
+    escape: ""
+    fileformat: avro
     fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: baby.csv
+    filepat: twitter.avro
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
-    header: true
-    inccolumns: true
+    header: false
+    inccolumns: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: true
+    mode: PERMISSIVE
+    modifiedAfter: ""
+    modifiedBefore: ""
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
       items:
         - {}
+    partitioncolumns: ""
     primary: false
     primarykeycon:
       items:
         - {}
     primarykeyname: ""
+    quote: ""
     readfiles: true
-    refreshstream: false
-    schedulePeriodOption: Periodic schedule
-    schedulerefresh: true
+    rescuedDataColumn: Incompatible_values
+    rowValidationXSDPath: ""
+    samplingRatio: ""
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: ""
+    skipRows: ""
     tableconstraints: false
-    tblproperties: "\"quality\"=\"bronze\""
-    tp: EVERY DAYS
-    tph: "30"
+    tblproperties: ""
+    timestampFormat: ""
+    tp: ""
+    tph: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: TARGET
-  materializationType: table
+  materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
     columns:
@@ -51,13 +88,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ed26e60a-1da3-4b05-bd60-889669ea86e6
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 9891dd8e-473f-4bbc-88aa-e261ce5c1dea
+          stepCounter: 10833ff8-467c-49b0-a403-303a3064f38a
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: FirstName
+        name: username
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -68,13 +105,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 96ad023c-3072-47e9-ace4-431f17f13d9f
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 08aaf1fc-b962-4ace-b552-ffc032e0c1b4
+          stepCounter: 10833ff8-467c-49b0-a403-303a3064f38a
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: County
+        name: tweet
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -85,64 +122,30 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 024fca63-c9bf-45a7-89c1-2f760d5f83b4
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 2a935f4c-c587-4e8e-92b9-3996281688ab
+          stepCounter: 10833ff8-467c-49b0-a403-303a3064f38a
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: ts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2812d4e7-dc9c-4484-bf4c-a8e8a8b285b0
+          stepCounter: 10833ff8-467c-49b0-a403-303a3064f38a
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: Sex
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7b9d47ca-5bd8-429b-83a8-c0c616bece17
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
-        config: {}
-        dataType: INT
-        defaultValue: ""
-        description: ""
-        name: Count
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 479ceac0-a689-4833-95ca-eacf20a89910
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: _rescued_data
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 58529167-6beb-4bbe-bd46-bad0c5bb4828
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
-        config: {}
-        dataType: INT
-        defaultValue: ""
-        description: ""
-        name: Year
+        name: Incompatible_values
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -157,9 +160,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: dlt_babyraw
+        name: ldp_avro_schema
         noLinkRefs: []
-  name: dlt_babyraw
+  name: ldp_avro_schema
   overrideSQL: false
   schema: ""
   sqlType: "368"

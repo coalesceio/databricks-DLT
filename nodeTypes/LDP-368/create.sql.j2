@@ -94,12 +94,29 @@ does not permit copying or modification for any other purpose.
 
           {%if currentState.config.readfiles == true and  desiredState.config.readfiles == true%}
            
-            {%if currentState.config.fileloc != desiredState.config.fileloc or currentState.config.fileformat != desiredState.config.fileformat or currentState.config.inccolumns != desiredState.config.inccolumns%}
+            {%- set exclude_keys = [
+              'partname', 'tableconstraints', 'primary', 'primarykeyname', 
+              'primarykeycon', 'foreign', 'foreignkeyname', 'parentabname', 
+              'foreignkey', 'constraintsspec','schedulePeriodOption','foreignkeycon','schedulerefresh','DLTtype'
+               ,'partitionclause','partclause'] -%}
 
-             {%set ns.fileproptst = false %}
-            
-          {%endif%}
+            {# 2. Create the new filtered dictionary #}
+            {%- set filtered_desired_dict = {} -%}
+            {%- set filtered_current_dict = {} -%}
+            {%- for key, value in desiredState.config.items() -%}
+            {%- if key not in exclude_keys -%}
+            {%- set _ = filtered_desired_dict.update({key: value}) -%}
+            {%- endif -%}
+            {%- endfor -%}
+            {%- for key, value in currentState.config.items() -%}
+            {%- if key not in exclude_keys -%}
+            {%- set _ = filtered_current_dict.update({key: value}) -%}
+            {%- endif -%}
+            {%- endfor -%}
 
+            {#Comparing currentState and desiredState of file loading and file formatting options #}
+
+              {%set ns.fileproptst = filtered_desired_dict == filtered_current_dict%}
           {%endif%}
 
 		    {#Add columns#}
@@ -285,7 +302,6 @@ does not permit copying or modification for any other purpose.
 
 
 {# CreateSQL for Table #}
-
 {{ stage('CREATE '+ desiredState.config.DLTtype,true, "sql", "create" ) }}
 
 CREATE OR REFRESH {{desiredState.config.DLTtype}} 
@@ -340,7 +356,13 @@ CREATE OR REFRESH {{desiredState.config.DLTtype}}
     {%-endif%}  
     FROM {%if desiredState.config.DLTtype == 'STREAMING TABLE'%} STREAM {%endif%}    
     {%if desiredState.config.readfiles == true %} 
-       read_files('{{desiredState.config.fileloc}}',format=>'{{desiredState.config.fileformat}}'{%if desiredState.config.fileformat == 'csv'%},delimiter=>'{{desiredState.config.delimiter}}',header=> {%if desiredState.config.header == True %}true {%else%} false{%endif%}{%endif%});
+       read_files('{{desiredState.config.fileloc}}',
+       format=>'{{desiredState.config.fileformat}}'
+       {%if desiredState.config.filepat !=""%},pathGlobFilter =>'{{desiredState.config.filepat}}'{%endif%}
+       {% set options = formatting_options() | trim %}
+        {% if options and options != '[]' %}
+          , {{ options  }}
+        {% endif %});
     {%else%}
     {{desiredState.sources[0].join|replace("FROM","")}}
     {%endif%}

@@ -43,33 +43,6 @@ metadata:
             enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
             default: false
 
-          - displayName: File location
-            attributeName: fileloc
-            type: textBox
-            enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
-            isRequired: false
-
-          - displayName: File format
-            attributeName: fileformat
-            type: dropdownSelector
-            options:
-            - csv
-            - json
-            enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
-            isRequired: false
-          
-          - displayName: Delimiter
-            attributeName: delimiter
-            type: textBox
-            enableIf: "{% if config.readfiles and config.fileformat == 'csv' %} true {% else %} false {% endif %}"
-            isRequired: false
-            
-          - displayName: Header
-            attributeName: header
-            type: toggleButton
-            enableIf: "{% if config.readfiles and config.fileformat == 'csv' %} true {% else %} false {% endif %}"
-            isRequired: false
-          
           - displayName: Table properties
             attributeName: tblproperties
             type: textBox
@@ -181,7 +154,325 @@ metadata:
           
             isRequired: false
             enableIf: "{% if config.constraints %} true {% else %} false {% endif %}"
+        
+        - groupName: File options
+          enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
+          items:
+        
+          - displayName: File location
+            attributeName: fileloc
+            type: textBox
+            enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
+            isRequired: false
 
+          - displayName: File name/File pattern
+            attributeName: filepat
+            type: textBox
+            enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
+            isRequired: false
+
+          - displayName: File type
+            attributeName: fileformat
+            type: dropdownSelector
+            options:
+            - csv
+            - json
+            - parquet
+            - avro
+            - orc
+            - text
+            - xml
+            enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
+            isRequired: false 
+
+          - displayName: Advanced file load options
+            attributeName: advfileopt
+            type: toggleButton
+
+          - displayName: Advanced file format options
+            attributeName: advfileforopt
+            type: toggleButton
+
+        - groupName: General file load Options 
+          enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
+          items:
+
+          - displayName: Schema definition(Ex:'id int, ts timestamp, event string')
+            attributeName: schemaopt
+            type: textBox
+          
+          - displayName: Override inferred schema columns(Ex:'id int, amount decimal(10,2)')
+            attributeName: schemahints
+            type: textBox
+          
+          - displayName: Infer exact column types
+            attributeName: infercolumntypes
+            type: toggleButton
+          
+          - displayName: Partition Columns(Comma-separated list of Hive-style partition columns to include)
+            attributeName: partitioncolumns
+            type: textBox      
+          
+          - displayName: ignoreCorruptFiles
+            attributeName: igcorfiles
+            type: toggleButton
+            isRequired: false
+
+          - displayName: ignoreMissingFiles
+            attributeName: igmisfiles
+            type: toggleButton
+            isRequired: false
+
+        - groupName: Advanced file load Options 
+          enableIf: "{% if config.readfiles and config.advfileopt%} true {% else %} false {% endif %}"
+          items:    
+
+          - displayName: Process files modified after (Ex '2024-01-01T00:00:00Z')
+            attributeName: modifiedAfter
+            type: textBox
+
+          - displayName: Process files modified before (Ex'2024-12-31T23:59:59Z')
+            attributeName: modifiedBefore
+            type: textBox
+
+          - displayName: Recursive file lookup
+            attributeName: recursiveFileLookup
+            type: toggleButton
+
+          - displayName: Use strict glob pattern matching
+            attributeName: useStrictGlobber
+            type: toggleButton
+        
+        - groupName: File format options
+          enableIf: "{% if config.readfiles %} true {% else %} false {% endif %}"
+          items:
+              
+          - displayName: Delimiter
+            attributeName: delimiter
+            type: textBox
+            enableIf: "{% if config.readfiles and config.fileformat == 'csv' %} true {% else %} false {% endif %}"
+            isRequired: false
+            
+          - displayName: Header added
+            attributeName: headers
+            type: toggleButton
+            enableIf: "{% if config.readfiles and config.fileformat in ('csv') %} true {% else %} false {% endif %}"
+            default: true
+            isRequired: false
+          
+          - displayName: Multi-line
+            attributeName: mulline
+            enableIf: "{% if config.fileformat in ('csv','json') %} true {% else %} false {% endif %}"
+            type: toggleButton
+            default: true
+            isRequired: false  
+
+          - displayName: Merge schema across files
+            attributeName: mergeSchema
+            type: toggleButton 
+          
+          - displayName: rowTag
+            attributeName: xmlrwTag
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml') %} true {% else %} false {% endif %}"
+            isRequired: false
+      
+          - displayName: valueTag
+            attributeName: xmlvalTag
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml') %} true {% else %} false {% endif %}"
+            isRequired: false
+          
+          - displayName: Line separator string. (Ex \r, \r\n, \n)
+            attributeName: lineSep
+            type: textBox
+            enableIf: "{% if config.fileformat in ('text') %} true {% else %} false {% endif %}"
+            isRequired: false	
+
+          
+        - groupName: Advanced File format options
+          enableIf: "{% if config.readfiles and config.advfileforopt%} true {% else %} false {% endif %}"
+          items:
+          
+          - displayName: Read file as single record
+            attributeName: wholeText
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('text') %} true {% else %} false {% endif %}"
+            isRequired: false	
+
+          - displayName: Datetime rebase mode
+            attributeName: datetimeRebaseMode
+            type: dropdownSelector
+            description: Rebasing DATE/TIMESTAMP values between Julian and Proleptic Gregorian calendars
+            options:
+            - EXCEPTION
+            - LEGACY
+            - CORRECTED
+            - ''
+            enableIf: "{% if config.fileformat in ('avro','xml','parquet') %} true {% else %} false {% endif %}"
+            default: LEGACY
+
+          - displayName: Integer rebase mode
+            attributeName: int96ebaseMode
+            type: dropdownSelector
+            description: Rebasing Integer values between Julian and Proleptic Gregorian calendars
+            options:
+            - EXCEPTION
+            - LEGACY
+            - CORRECTED
+            - ''
+            enableIf: "{% if config.fileformat in ('xml','parquet') %} true {% else %} false {% endif %}"
+            default: LEGACY
+           
+          - displayName: Column name for rescued data column
+            attributeName: rescuedDataColumn
+            type: textBox
+          
+          - displayName: Prefix for attribute
+            attributeName: attributePrefix
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml') %} true {% else %} false {% endif %}"
+            isRequired: false
+          
+          - displayName: Avro Schema(JSON string-Avro specification style)
+            attributeName: aschemaopt
+            type: textBox
+            enableIf: "{% if config.fileformat in ('avro') %} true {% else %} false {% endif %}"
+          
+          - displayName: encoding
+            attributeName: encoding
+            default: "UTF-8"
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml','csv','json','text') %} true {% else %} false {% endif %}"
+            isRequired: false
+          
+          - displayName: Character indicating line comment
+            attributeName: comment
+            type: textBox
+            enableIf: "{% if config.fileformat in ('csv') %} true {% else %} false {% endif %}"
+            isRequired: false	
+          
+          - displayName: Number of rows to skip from beginning
+            attributeName: skipRows
+            type: textBox
+            enableIf: "{% if config.fileformat in ('csv') %} true {% else %} false {% endif %}"
+            isRequired: false	
+          
+          - displayName: Quote Character
+            attributeName: quote
+            type: textBox
+            enableIf: "{% if config.fileformat in ('csv') %} true {% else %} false {% endif %}"
+            isRequired: false	
+
+          - displayName: Escape Character
+            attributeName: escape
+            type: textBox
+            enableIf: "{% if config.fileformat in ('csv') %} true {% else %} false {% endif %}"
+            isRequired: false	
+          
+          - displayName: Date Parsing Format
+            attributeName: dateFormat
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml','csv') %} true {% else %} false {% endif %}"
+            isRequired: false	
+      
+          - displayName: Timestamp Parsing Format
+            attributeName: timestampFormat
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml','csv') %} true {% else %} false {% endif %}"
+            isRequired: false
+
+          - displayName: Parser mode
+            attributeName: mode
+            type: dropdownSelector
+            description: Rebasing Integer values between Julian and Proleptic Gregorian calendars
+            options:
+            - PERMISSIVE
+            - DROPMALFORMED
+            - FAILFAST
+            - ''
+            enableIf: "{% if config.fileformat in ('csv','json') %} true {% else %} false {% endif %}"
+            default: PERMISSIVE
+          
+          - displayName: Infer primitives as string type
+            attributeName: primitivesAsString
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('json') %} true {% else %} false {% endif %}"
+            isRequired: false
+          
+          - displayName: Allow Java/C/C++ style comments
+            attributeName: allowComments
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('json') %} true {% else %} false {% endif %}"
+            isRequired: false
+      
+          - displayName: Allow unquoted field names 
+            attributeName: allowUnquotedFieldNames
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('json') %} true {% else %} false {% endif %}"
+            isRequired: false
+      
+          - displayName: Allow single quotes for strings
+            attributeName: allowSingleQuotes
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('json') %} true {% else %} false {% endif %}"
+            isRequired: false
+    		
+          - displayName: Ignore all-null columns during inference
+            attributeName: dropFieldIfAllNull
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('json') %} true {% else %} false {% endif %}"
+            isRequired: false
+      
+          - displayName: Ignore leading Whitespaces
+            attributeName: ignoreLeadingWhiteSpace
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('csv') %} true {% else %} false {% endif %}"
+            isRequired: false
+      
+          - displayName: Ignore trailing Whitespaces
+            attributeName: ignoreTrailingWhiteSpace
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('csv') %} true {% else %} false {% endif %}"
+            isRequired: false
+      
+          - displayName: Path to XSD for row validation
+            attributeName: rowValidationXSDPath
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml') %} true {% else %} false {% endif %}"
+            isRequired: false	
+          
+          - displayName: String representation of null
+            attributeName: nullvalue
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml','csv') %} true {% else %} false {% endif %}"
+            isRequired: false
+          
+          - displayName: Exclude attributes from elements. 
+            attributeName: excludeAttribute
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('xml') %} true {% else %} false {% endif %}"
+            isRequired: false
+
+          - displayName: Skip surrounding whitespace 
+            attributeName: ignoreSurroundingSpaces
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('xml') %} true {% else %} false {% endif %}"
+            isRequired: false
+    		
+          - displayName: Ignore namespace 
+            attributeName: ignoreNamespace
+            type: toggleButton
+            enableIf: "{% if config.fileformat in ('xml') %} true {% else %} false {% endif %}"
+            isRequired: false
+    	
+          - displayName: Sampling ratio
+            attributeName: samplingRatio
+            type: textBox
+            enableIf: "{% if config.fileformat in ('xml') %} true {% else %} false {% endif %}"
+            isRequired: false	
+    		
+        
         - groupName: Schedule Options
           enableIf: "{% if (config.schedulerefresh ) %} true {% else %} false {% endif %}"
           items:

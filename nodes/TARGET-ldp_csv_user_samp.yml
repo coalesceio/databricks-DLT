@@ -1,48 +1,90 @@
 fileVersion: 1
-id: b80b783d-9404-4285-9391-9b4b0e9d3d77
-name: dlt_babyraw
+id: 088c5741-2328-4149-89d2-c0524cd654e4
+name: ldp_csv_user_samp
 operation:
   config:
     DLTtype: STREAMING TABLE
+    advfileforopt: true
+    advfileopt: true
+    aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
         - {}
-    delimiter: "|"
+    cron: ""
+    crontz: ""
+    dataaddress: "1"
+    dateFormat: yyyy-MM-dd
+    datetimeRebaseMode: LEGACY
+    delimiter: ","
+    encoding: UTF-8
+    escape: \\
+    excludeAttribute: false
     fileformat: csv
     fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: baby.csv
+    filepat: users12.csv
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
-    header: true
-    inccolumns: true
+    header: false
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: false
+    ignoreSurroundingSpaces: false
+    ignoreTrailingWhiteSpace: false
+    inccolumns: false
+    infercolumntypes: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: true
+    mode: ""
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
       items:
         - {}
+    partitioncolumns: year
     primary: false
     primarykeycon:
       items:
         - {}
     primarykeyname: ""
+    quote: ""
     readfiles: true
-    refreshstream: false
-    schedulePeriodOption: Periodic schedule
-    schedulerefresh: true
+    recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: ""
+    skipRows: ""
     tableconstraints: false
-    tblproperties: "\"quality\"=\"bronze\""
-    tp: EVERY DAYS
-    tph: "30"
+    tblproperties: ""
+    timestampFormat: yyyy-MM-dd HH:mm:ss
+    tp: ""
+    tph: ""
+    useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: TARGET
-  materializationType: table
+  materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
     columns:
@@ -51,13 +93,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ed26e60a-1da3-4b05-bd60-889669ea86e6
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 1e9ac266-2b82-467a-8999-c76bdb9d1615
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: FirstName
+        name: id
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -68,13 +110,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 96ad023c-3072-47e9-ace4-431f17f13d9f
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: fac5aabd-9d75-418c-ac37-22b242f8160b
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: County
+        name: ts
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -85,13 +127,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 024fca63-c9bf-45a7-89c1-2f760d5f83b4
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 8b331197-ecc0-4b21-ab27-4a9db5b7d9ba
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: Sex
+        name: event
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -102,13 +144,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7b9d47ca-5bd8-429b-83a8-c0c616bece17
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 38789543-14d5-47cc-9a1c-da97400ba07b
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
         config: {}
         dataType: INT
         defaultValue: ""
         description: ""
-        name: Count
+        name: year
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -119,30 +161,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 479ceac0-a689-4833-95ca-eacf20a89910
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
+          columnCounter: 606d6348-ac8b-429d-8838-d1aa2a9f157b
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
         name: _rescued_data
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 58529167-6beb-4bbe-bd46-bad0c5bb4828
-          stepCounter: b80b783d-9404-4285-9391-9b4b0e9d3d77
-        config: {}
-        dataType: INT
-        defaultValue: ""
-        description: ""
-        name: Year
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -157,9 +182,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: dlt_babyraw
+        name: ldp_csv_user_samp
         noLinkRefs: []
-  name: dlt_babyraw
+  name: ldp_csv_user_samp
   overrideSQL: false
   schema: ""
   sqlType: "368"

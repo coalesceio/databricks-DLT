@@ -1,0 +1,147 @@
+fileVersion: 1
+id: d79f50a6-96ac-412d-b1b8-05ba1c723765
+name: ldp_xml_adv
+operation:
+  config:
+    DLTtype: STREAMING TABLE
+    advfileforopt: true
+    advfileopt: false
+    allowComments: false
+    allowSingleQuotes: false
+    allowUnquotedFieldNames: false
+    aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
+    constraints: false
+    constraintsspec:
+      items:
+        - {}
+    cron: ""
+    crontz: ""
+    dataaddress: "1"
+    dateFormat: ""
+    datetimeRebaseMode: LEGACY
+    delimiter: ""
+    dropFieldIfAllNull: false
+    encoding: UTF-8
+    escape: ""
+    excludeAttribute: true
+    fileformat: xml
+    fileloc: /Volumes/coalesce/target_de/target-gcp/
+    filepat: purchase.xml
+    foreign: false
+    foreignkeycon:
+      items:
+        - {}
+    foreignkeyname: ""
+    header: true
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: true
+    ignoreSurroundingSpaces: true
+    ignoreTrailingWhiteSpace: false
+    inccolumns: false
+    infercolumntypes: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: false
+    mode: LEGACY
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
+    parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
+    partclause: false
+    partitionclause:
+      items:
+        - {}
+    partitioncolumns: ""
+    primary: false
+    primarykeycon:
+      items:
+        - {}
+    primarykeyname: ""
+    primitivesAsString: false
+    quote: ""
+    readfiles: true
+    recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: ""
+    skipRows: ""
+    tableconstraints: false
+    tblproperties: ""
+    timestampFormat: ""
+    tp: ""
+    tph: ""
+    useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: PurchaseOrders
+    xmlvalTag: PurchaseOrder
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: STREAMING TABLE
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a71d45c-d875-4888-a858-0b3867d20a68
+          stepCounter: d79f50a6-96ac-412d-b1b8-05ba1c723765
+        config: {}
+        dataType: ARRAY
+        defaultValue: ""
+        description: ""
+        name: PurchaseOrder
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e6fa8f01-bb85-40d6-9752-4b00ef9a062f
+          stepCounter: d79f50a6-96ac-412d-b1b8-05ba1c723765
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: ldp_xml_adv
+        noLinkRefs: []
+  name: ldp_xml_adv
+  overrideSQL: false
+  schema: ""
+  sqlType: "368"
+  type: sql
+  version: 1
+type: Node

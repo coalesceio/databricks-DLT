@@ -1,0 +1,164 @@
+fileVersion: 1
+id: d45ab1c8-334d-4a90-907a-1055c96db8cc
+name: ldp_json_schema
+operation:
+  config:
+    DLTtype: STREAMING TABLE
+    advfileforopt: false
+    advfileopt: true
+    allowComments: false
+    allowSingleQuotes: false
+    allowUnquotedFieldNames: false
+    aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
+    constraints: false
+    constraintsspec:
+      items:
+        - {}
+    cron: ""
+    crontz: ""
+    dataaddress: "1"
+    dateFormat: ""
+    datetimeRebaseMode: LEGACY
+    delimiter: ""
+    dropFieldIfAllNull: false
+    encoding: UTF-8
+    escape: ""
+    excludeAttribute: false
+    fileformat: json
+    fileloc: /Volumes/coalesce/target_de/target-gcp/
+    filepat: shipper.json
+    foreign: false
+    foreignkeycon:
+      items:
+        - {}
+    foreignkeyname: ""
+    header: true
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: false
+    ignoreSurroundingSpaces: false
+    ignoreTrailingWhiteSpace: false
+    inccolumns: false
+    infercolumntypes: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: false
+    mode: LEGACY
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
+    parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
+    partclause: false
+    partitionclause:
+      items:
+        - {}
+    partitioncolumns: ""
+    primary: false
+    primarykeycon:
+      items:
+        - {}
+    primarykeyname: ""
+    primitivesAsString: false
+    quote: ""
+    readfiles: true
+    recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: ShipperID int,CompanyName string,Phone string
+    skipRows: ""
+    tableconstraints: false
+    tblproperties: ""
+    timestampFormat: ""
+    tp: ""
+    tph: ""
+    useStrictGlobber: true
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: STREAMING TABLE
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: db1d1e94-cfee-4708-9e09-b5eb8a59d3d3
+          stepCounter: d45ab1c8-334d-4a90-907a-1055c96db8cc
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: shipperid
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 05942c93-a0ab-4cd2-9d4c-bf78c4886c41
+          stepCounter: d45ab1c8-334d-4a90-907a-1055c96db8cc
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: companyname
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19cd5915-cabe-4a6b-ad10-8ec4bf53ac68
+          stepCounter: d45ab1c8-334d-4a90-907a-1055c96db8cc
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: phone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: ldp_json_schema
+        noLinkRefs: []
+  name: ldp_json_schema
+  overrideSQL: false
+  schema: ""
+  sqlType: "368"
+  type: sql
+  version: 1
+type: Node

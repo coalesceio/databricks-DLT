@@ -1,0 +1,92 @@
+fileVersion: 1
+id: bf873ed3-74e8-40ed-a5e8-bab37da99117
+name: ldp_text_prod
+operation:
+  config:
+    DLTtype: STREAMING TABLE
+    advfileforopt: true
+    constraints: false
+    constraintsspec:
+      items:
+        - {}
+    cron: ""
+    crontz: ""
+    delimiter: ""
+    encoding: UTF-8
+    fileformat: text
+    fileloc: /Volumes/coalesce/target_de/target-gcp/
+    filepat: productcat2.txt
+    foreign: false
+    foreignkeycon:
+      items:
+        - {}
+    foreignkeyname: ""
+    header: false
+    inccolumns: false
+    lineSep: \n
+    parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
+    partclause: false
+    partitionclause:
+      items:
+        - {}
+    partitioncolumns: ""
+    primary: false
+    primarykeycon:
+      items:
+        - {}
+    primarykeyname: ""
+    readfiles: true
+    rescuedDataColumn: ""
+    schedulePeriodOption: ""
+    schedulerefresh: false
+    schemahints: ""
+    schemaopt: ""
+    tableconstraints: false
+    tblproperties: ""
+    tp: ""
+    tph: ""
+    wholeText: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: STREAMING TABLE
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c229456-b20e-4372-9cc8-f6a290091429
+          stepCounter: bf873ed3-74e8-40ed-a5e8-bab37da99117
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: value
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: ldp_text_prod
+        noLinkRefs: []
+  name: ldp_text_prod
+  overrideSQL: false
+  schema: ""
+  sqlType: "368"
+  type: sql
+  version: 1
+type: Node
