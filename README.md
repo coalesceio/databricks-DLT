@@ -72,7 +72,7 @@ There are four configs within the **Node Properties** group.
 |----------------------------------|---------------|
 | **File Location** | External cloud location of the file. |
 | **File Name/File Pattern**     | The pattern to identify files to be processed. |
-| **File Type**                  | - Options: **CSV**, **JSON**, **Parquet**, **Avro**, **ORC**, **Text**, **XML**. |
+| **File Type**                  | - Options: **[CSV](#csv-options)**, **[JSON](#json-options)**, **[Parquet](#parquet-options)**, **[Avro](#avro-options)**, **[ORC](#orc-options)**, **[Text](#text-options)**, **[XML](#xml-options)**. |
 | **Advanced File Load Options** | Toggle to enable additional loading options for files. |
 | **Advanced File Format Options** | Toggle to enable additional formatting options for files. |
 
