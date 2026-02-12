@@ -1,6 +1,6 @@
 # **Lakeflow Declarative Pipelines**
 
-## **Introduction**
+## **Brief Summary**
 
 The Coalesce LDP node type allows you to create a streaming table.
 A streaming table is a form of Unity Catalog managed table that is also a streaming target for Lakeflow Declarative Pipelines.
@@ -28,6 +28,11 @@ The LDP has two configuration groups:
 * [LDP Node Properties](#ldp-node-properties)
 * [General Options](#general-options)
 * [LDP Options](#ldp-options)
+* [File Options](#file-options)
+* [General file load Options](#general-file-load-options)
+* [File format options](#file-format-options)
+* [Advanced file format options](#advanced-file-foramt-options)
+* [Advanced file load options](#advanced-file-load-options)
 * [Schedule Options](#schedule-options)
 
 <h4 id="dlt-node-properties"> LDP Node Properties </h4>
