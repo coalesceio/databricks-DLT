@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 09fb3c38-d630-4d34-8aa4-fe933a99bf8a
-name: ldp_text
+id: bf873ed3-74e8-40ed-a5e8-bab37da99117
+name: ldp_text_prod
 operation:
   config:
     DLTtype: STREAMING TABLE
@@ -60,8 +60,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8d2978e0-dd8a-4d34-a41d-fd608abb6a72
-          stepCounter: 09fb3c38-d630-4d34-8aa4-fe933a99bf8a
+          columnCounter: 1c229456-b20e-4372-9cc8-f6a290091429
+          stepCounter: bf873ed3-74e8-40ed-a5e8-bab37da99117
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -81,9 +81,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_text
+        name: ldp_text_prod
         noLinkRefs: []
-  name: ldp_text
+  name: ldp_text_prod
   overrideSQL: false
   schema: ""
   sqlType: "368"

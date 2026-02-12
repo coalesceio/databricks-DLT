@@ -92,7 +92,41 @@ operation:
   materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bd0d11f4-677d-455d-9fd5-2e5b177fa9ac
+          stepCounter: 3c6a7eb9-5075-4dfe-9149-95166fb01b55
+        config: {}
+        dataType: ARRAY
+        defaultValue: ""
+        description: ""
+        name: book
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f1527a65-cc5f-4838-8315-9954d24093be
+          stepCounter: 3c6a7eb9-5075-4dfe-9149-95166fb01b55
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

@@ -1,0 +1,36 @@
+{{ stage('Drop Streaming table' , true, "sql", "drop") }}
+
+
+{% set ns = namespace( storageLocationTest= true,
+    descolchanges = 0,othercolchanges = 0,clusterTest = false,colchanges=0,nsCurrentDepStorageLocations="",nsCurrentSourceStorageLocations="",nsDesiredDepStorageLocations="",nsDesiredSourceStorageLocations="",sourcestorageLocationTest=true,scheduleref="",createTst=false,alterTest=false,fileproptst=true,joinTest=true ) %}
+	
+
+
+{%if currentState.config.readfiles == true and  desiredState.config.readfiles == true%}
+           
+            {%- set exclude_keys = [
+              'partname', 'tableconstraints', 'primary', 'primarykeyname', 
+              'primarykeycon', 'foreign', 'foreignkeyname', 'parentabname', 
+              'foreignkey', 'constraintsspec','schedulePeriodOption','foreignkeycon','schedulerefresh','DLTtype'
+               ,'partitionclause','partclause'] -%}
+
+            {# 2. Create the new filtered dictionary #}
+            {%- set filtered_desired_dict = {} -%}
+            {%- set filtered_current_dict = {} -%}
+            {%- for key, value in desiredState.config.items() -%}
+            {%- if key not in exclude_keys -%}
+            {%- set _ = filtered_desired_dict.update({key: value}) -%}
+            {%- endif -%}
+            {%- endfor -%}
+            {%- for key, value in currentState.config.items() -%}
+            {%- if key not in exclude_keys -%}
+            {%- set _ = filtered_current_dict.update({key: value}) -%}
+            {%- endif -%}
+            {%- endfor -%}
+
+            {#Comparing currentState and desiredState of file loading and file formatting options #}
+              {%set ns.fileproptst = filtered_desired_dict == filtered_current_dict%}
+              
+          {%endif%}
+
+{{- ns.fileproptst -}}

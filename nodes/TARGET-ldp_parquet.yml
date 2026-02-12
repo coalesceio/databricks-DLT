@@ -4,12 +4,15 @@ name: ldp_parquet
 operation:
   config:
     DLTtype: STREAMING TABLE
+    advfileforopt: true
+    advfileopt: true
     constraints: false
     constraintsspec:
       items:
         - {}
     cron: ""
     crontz: ""
+    datetimeRebaseMode: LEGACY
     delimiter: ""
     fileformat: parquet
     fileloc: /Volumes/coalesce/target_de/target-gcp/parquet/
@@ -21,19 +24,26 @@ operation:
     foreignkeyname: ""
     header: true
     inccolumns: true
+    int96ebaseMode: LEGACY
+    modifiedAfter: ""
+    modifiedBefore: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
       items:
         - {}
+    partitioncolumns: ""
     primary: false
     primarykeycon:
       items:
         - {}
     primarykeyname: ""
     readfiles: true
+    rescuedDataColumn: test
     schedulePeriodOption: ""
     schedulerefresh: false
+    schemahints: ""
+    schemaopt: ""
     tableconstraints: false
     tblproperties: ""
     tp: ""
@@ -222,7 +232,24 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5a51b741-c54e-486d-80aa-0df6b474f0e0
+          columnCounter: 422a1dc6-ea62-4abb-ac88-4703e8bb133d
+          stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: test
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2f9a2eee-bb40-4ada-adc1-924bfa56beef
           stepCounter: d9ebb050-3852-4cbf-9cbe-e2e2a778f931
         config: {}
         dataType: STRING

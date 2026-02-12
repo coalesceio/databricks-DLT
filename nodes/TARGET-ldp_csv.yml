@@ -68,7 +68,7 @@ operation:
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
-    schemaopt: ""
+    schemaopt: Year string,FirstName string,County string,Sex string,Count string
     skipRows: ""
     tableconstraints: false
     tblproperties: ""
@@ -87,7 +87,109 @@ operation:
   materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bf95975a-adfd-4f54-9600-672ba2475bd5
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Year
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 557002a7-2fac-4692-bb35-520b7d39bf54
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FirstName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 221ff88f-7eda-4b78-bad2-e9b2cdc1d675
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: County
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8a9ed562-3220-4c28-a44e-717080960dff
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Sex
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f7fade84-492f-452c-afac-d7823d9594e2
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 373ddfb6-d5d8-4191-834f-91cf7b78a6ce
+          stepCounter: 843fb7ae-f696-4310-af55-8fd666b65128
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

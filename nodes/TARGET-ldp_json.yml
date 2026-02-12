@@ -92,7 +92,279 @@ operation:
   materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f653444-527f-4d8d-9d63-17499c76bd2d
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a4a55b3e-a6eb-486c-a9eb-a7c7e9974995
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: BirthDate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0e31e2ed-7865-44c7-975a-0d59b180a501
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 57cdaacd-0b45-48a1-a627-318a32e7eba3
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Country
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3768c9bb-9eb9-431f-8333-0edd33d4a57d
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: EmployeeID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae5efcab-dd90-40ae-ac04-34e4ba2453c6
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: Extension
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d78ae0c6-0e17-49f6-a10b-78d573efb754
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FirstName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 69ddeab8-360e-4cc9-bb3a-63276ef3c0ca
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: HireDate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e2ec0e6e-4968-45c5-af2d-79509d05e470
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: HomePhone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9aac0308-6628-4de7-ab58-4bccb993e58a
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: LastName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b3bb175-a010-4a8c-a77b-fad66895ed40
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: PostalCode
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11faa3d8-eec6-4899-be50-d8fcafcc33a7
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Region
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5d91241-f461-4e50-8b65-a354342634ae
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: ReportsTo
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 65dac189-4672-46e2-b3a3-57620447dfaa
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Title
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f9605b41-8877-4975-8f14-33b7c986a252
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: TitleOfCourtesy
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93539899-02c5-49ea-b6b1-55b54081dac3
+          stepCounter: 5ed76942-aad3-46e1-9efa-c8612f0d30ac
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

@@ -1,29 +1,53 @@
 fileVersion: 1
-id: 09fb3c38-d630-4d34-8aa4-fe933a99bf8a
-name: ldp_text
+id: b0058b0a-97e7-4ff9-a4d8-acbc37b6d362
+name: ldp_csv_user
 operation:
   config:
     DLTtype: STREAMING TABLE
     advfileforopt: true
+    advfileopt: true
+    aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
         - {}
     cron: ""
     crontz: ""
-    delimiter: ""
+    dataaddress: "1"
+    dateFormat: ""
+    datetimeRebaseMode: LEGACY
+    delimiter: ","
     encoding: UTF-8
-    fileformat: text
+    escape: ""
+    excludeAttribute: false
+    fileformat: csv
     fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: productcat2.txt
+    filepat: users12.csv
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
     header: false
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: false
+    ignoreSurroundingSpaces: false
+    ignoreTrailingWhiteSpace: false
     inccolumns: false
-    lineSep: \n
+    infercolumntypes: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: false
+    mode: ""
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
@@ -35,17 +59,26 @@ operation:
       items:
         - {}
     primarykeyname: ""
+    quote: ""
     readfiles: true
+    recursiveFileLookup: false
     rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
     schemaopt: ""
+    skipRows: ""
     tableconstraints: false
     tblproperties: ""
+    timestampFormat: ""
     tp: ""
     tph: ""
-    wholeText: true
+    useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""
@@ -54,24 +87,7 @@ operation:
   materializationType: STREAMING TABLE
   metadata:
     appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8d2978e0-dd8a-4d34-a41d-fd608abb6a72
-          stepCounter: 09fb3c38-d630-4d34-8aa4-fe933a99bf8a
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: value
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
+    columns: []
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -81,9 +97,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_text
+        name: ldp_csv_user
         noLinkRefs: []
-  name: ldp_text
+  name: ldp_csv_user
   overrideSQL: false
   schema: ""
   sqlType: "368"

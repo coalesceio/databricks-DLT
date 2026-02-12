@@ -1,52 +1,84 @@
 fileVersion: 1
-id: e541e8dd-4310-4a23-b5df-0218d22263aa
-name: ldp_avro
+id: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
+name: ldp_csv_user_samp2
 operation:
   config:
     DLTtype: STREAMING TABLE
-    advfileforopt: true
+    advfileforopt: false
     advfileopt: true
     aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
         - {}
     cron: ""
     crontz: ""
+    dataaddress: "1"
+    dateFormat: ""
     datetimeRebaseMode: LEGACY
-    delimiter: ""
-    fileformat: avro
+    delimiter: ","
+    encoding: UTF-8
+    escape: ""
+    excludeAttribute: false
+    fileformat: csv
     fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: twitter.avro
+    filepat: users12.csv
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
     header: false
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: false
+    ignoreSurroundingSpaces: false
+    ignoreTrailingWhiteSpace: false
     inccolumns: false
+    infercolumntypes: true
+    int96ebaseMode: LEGACY
+    lineSep: ""
     mergeSchema: true
+    mode: ""
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
       items:
         - {}
-    partitioncolumns: ""
+    partitioncolumns: year
     primary: false
     primarykeycon:
       items:
         - {}
     primarykeyname: ""
+    quote: ""
     readfiles: true
-    rescuedDataColumn: incompatible_columns
+    recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
-    schemaopt: ""
+    schemaopt: id int, Ts timestamp, Event string,Year INT
+    skipRows: ""
     tableconstraints: false
     tblproperties: ""
+    timestampFormat: ""
     tp: ""
     tph: ""
+    useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: ""
+    xmlvalTag: ""
   database: ""
   deployEnabled: true
   description: ""
@@ -61,13 +93,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e8ec2a02-db9d-4499-ad64-157cab73719e
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: 70004001-7136-4782-a40a-b6d371625eae
+          stepCounter: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
         config: {}
-        dataType: STRING
+        dataType: INT
         defaultValue: ""
         description: ""
-        name: username
+        name: id
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -78,13 +110,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 454a59c9-53aa-4e34-a936-19f6166a9cc6
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: 7d3a701a-c7ea-46b2-b662-3c9260450dab
+          stepCounter: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
         config: {}
-        dataType: STRING
+        dataType: TIMESTAMP
         defaultValue: ""
         description: ""
-        name: tweet
+        name: ts
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -95,13 +127,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8bdb0ade-ce4e-4849-abc3-c33d61129ddb
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: 24cb4c34-e930-44e8-b986-ae9c798e9f5b
+          stepCounter: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
         config: {}
-        dataType: LONG
+        dataType: STRING
         defaultValue: ""
         description: ""
-        name: timestamp
+        name: event
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -112,21 +144,18 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 348d7490-35bf-4b68-b2df-1f2be62f0395
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: c9de0803-ed42-4c6a-b77e-a192517b29bd
+          stepCounter: 7ff227d6-9f0b-400f-9fe6-a3ad7d69581a
         config: {}
-        dataType: STRING
+        dataType: INT
         defaultValue: ""
         description: ""
-        keyColumnType: None
-        name: CAPNAME
+        name: year
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: UPPER(`Username`)
-        systemColumnType: None
+          - columnReferences: []
+            transform: ""
+        transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -136,9 +165,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_avro
+        name: ldp_csv_user_samp2
         noLinkRefs: []
-  name: ldp_avro
+  name: ldp_csv_user_samp2
   overrideSQL: false
   schema: ""
   sqlType: "368"

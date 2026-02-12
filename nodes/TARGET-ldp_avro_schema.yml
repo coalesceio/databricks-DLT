@@ -1,12 +1,21 @@
 fileVersion: 1
-id: e541e8dd-4310-4a23-b5df-0218d22263aa
-name: ldp_avro
+id: 10833ff8-467c-49b0-a403-303a3064f38a
+name: ldp_avro_schema
 operation:
   config:
     DLTtype: STREAMING TABLE
     advfileforopt: true
     advfileopt: true
-    aschemaopt: ""
+    aschemaopt: |-
+      {
+            "type": "record",
+            "name": "TwitterRecord",
+            "fields": [
+              {"name": "username", "type": "string"},
+              {"name": "tweet", "type": "string"},
+              {"name": "ts", "type": {"type": "long", "logicalType": "timestamp-micros"}}
+            ]
+          }
     constraints: false
     constraintsspec:
       items:
@@ -38,7 +47,7 @@ operation:
         - {}
     primarykeyname: ""
     readfiles: true
-    rescuedDataColumn: incompatible_columns
+    rescuedDataColumn: Incompatible_values
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
@@ -61,8 +70,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e8ec2a02-db9d-4499-ad64-157cab73719e
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: 9891dd8e-473f-4bbc-88aa-e261ce5c1dea
+          stepCounter: 10833ff8-467c-49b0-a403-303a3064f38a
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -78,8 +87,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 454a59c9-53aa-4e34-a936-19f6166a9cc6
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: 08aaf1fc-b962-4ace-b552-ffc032e0c1b4
+          stepCounter: 10833ff8-467c-49b0-a403-303a3064f38a
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -95,13 +104,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8bdb0ade-ce4e-4849-abc3-c33d61129ddb
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: 2a935f4c-c587-4e8e-92b9-3996281688ab
+          stepCounter: 10833ff8-467c-49b0-a403-303a3064f38a
         config: {}
-        dataType: LONG
+        dataType: TIMESTAMP
         defaultValue: ""
         description: ""
-        name: timestamp
+        name: ts
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -112,21 +121,18 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 348d7490-35bf-4b68-b2df-1f2be62f0395
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: 2812d4e7-dc9c-4484-bf4c-a8e8a8b285b0
+          stepCounter: 10833ff8-467c-49b0-a403-303a3064f38a
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        keyColumnType: None
-        name: CAPNAME
+        name: Incompatible_values
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: UPPER(`Username`)
-        systemColumnType: None
+          - columnReferences: []
+            transform: ""
+        transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -136,9 +142,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_avro
+        name: ldp_avro_schema
         noLinkRefs: []
-  name: ldp_avro
+  name: ldp_avro_schema
   overrideSQL: false
   schema: ""
   sqlType: "368"

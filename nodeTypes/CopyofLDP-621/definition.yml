@@ -1,11 +1,11 @@
 fileVersion: 1
-id: "368"
+id: "621"
 isDisabled: false
 metadata:
   defaultStorageLocation: null
   error: null
   nodeMetadataSpec: |+
-    capitalized: ldp
+    capitalized: Copy of ldp
     short: ldp
     plural: Lakeflow Declarative Principles
     tagColor: '#35D491'
@@ -515,5 +515,5 @@ metadata:
 
 
 
-name: LDP
+name: Copy of LDP
 type: NodeType

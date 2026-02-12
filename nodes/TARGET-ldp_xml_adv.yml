@@ -1,31 +1,57 @@
 fileVersion: 1
-id: e541e8dd-4310-4a23-b5df-0218d22263aa
-name: ldp_avro
+id: d79f50a6-96ac-412d-b1b8-05ba1c723765
+name: ldp_xml_adv
 operation:
   config:
     DLTtype: STREAMING TABLE
     advfileforopt: true
-    advfileopt: true
+    advfileopt: false
+    allowComments: false
+    allowSingleQuotes: false
+    allowUnquotedFieldNames: false
     aschemaopt: ""
+    attributePrefix: ""
+    comment: ""
     constraints: false
     constraintsspec:
       items:
         - {}
     cron: ""
     crontz: ""
+    dataaddress: "1"
+    dateFormat: ""
     datetimeRebaseMode: LEGACY
     delimiter: ""
-    fileformat: avro
+    dropFieldIfAllNull: false
+    encoding: UTF-8
+    escape: ""
+    excludeAttribute: true
+    fileformat: xml
     fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: twitter.avro
+    filepat: purchase.xml
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
-    header: false
+    header: true
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    ignoreLeadingWhiteSpace: false
+    ignoreNamespace: true
+    ignoreSurroundingSpaces: true
+    ignoreTrailingWhiteSpace: false
     inccolumns: false
-    mergeSchema: true
+    infercolumntypes: false
+    int96ebaseMode: LEGACY
+    lineSep: ""
+    mergeSchema: false
+    mode: LEGACY
+    modifiedAfter: ""
+    modifiedBefore: ""
+    mulline: true
+    nullvalue: ""
     parentabname: ex:`<catalog>`.`<schema>`.`<tablename>`
     partclause: false
     partitionclause:
@@ -37,16 +63,27 @@ operation:
       items:
         - {}
     primarykeyname: ""
+    primitivesAsString: false
+    quote: ""
     readfiles: true
-    rescuedDataColumn: incompatible_columns
+    recursiveFileLookup: false
+    rescuedDataColumn: ""
+    rowValidationXSDPath: ""
+    samplingRatio: ""
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
     schemaopt: ""
+    skipRows: ""
     tableconstraints: false
     tblproperties: ""
+    timestampFormat: ""
     tp: ""
     tph: ""
+    useStrictGlobber: false
+    wholeText: ""
+    xmlrwTag: PurchaseOrders
+    xmlvalTag: PurchaseOrder
   database: ""
   deployEnabled: true
   description: ""
@@ -61,13 +98,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e8ec2a02-db9d-4499-ad64-157cab73719e
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: 1a71d45c-d875-4888-a858-0b3867d20a68
+          stepCounter: d79f50a6-96ac-412d-b1b8-05ba1c723765
         config: {}
-        dataType: STRING
+        dataType: ARRAY
         defaultValue: ""
         description: ""
-        name: username
+        name: PurchaseOrder
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -78,55 +115,18 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 454a59c9-53aa-4e34-a936-19f6166a9cc6
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
+          columnCounter: e6fa8f01-bb85-40d6-9752-4b00ef9a062f
+          stepCounter: d79f50a6-96ac-412d-b1b8-05ba1c723765
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: tweet
+        name: _rescued_data
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
         transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8bdb0ade-ce4e-4849-abc3-c33d61129ddb
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
-        config: {}
-        dataType: LONG
-        defaultValue: ""
-        description: ""
-        name: timestamp
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 348d7490-35bf-4b68-b2df-1f2be62f0395
-          stepCounter: e541e8dd-4310-4a23-b5df-0218d22263aa
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        keyColumnType: None
-        name: CAPNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: UPPER(`Username`)
-        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -136,9 +136,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_avro
+        name: ldp_xml_adv
         noLinkRefs: []
-  name: ldp_avro
+  name: ldp_xml_adv
   overrideSQL: false
   schema: ""
   sqlType: "368"
