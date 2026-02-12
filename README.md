@@ -31,7 +31,6 @@ The LDP has two configuration groups:
 * [File Options](#file-options)
 * [General file load Options](#general-file-load-options)
 * [File format options](#file-format-options)
-* [Advanced file format options](#advanced-file-foramt-options)
 * [Advanced file load options](#advanced-file-load-options)
 * [Schedule Options](#schedule-options)
 
@@ -60,15 +59,139 @@ There are four configs within the **Node Properties** group.
 | **Type of Lakeflow Declarative Pipeline**     | - Streaming Table |
 | **Read Files**                   | **True / False** toggle <br/>- **True**: Allows loading from an external cloud location into a streaming table.<br/>- **False**: Allows loading from a table source. |
 | **Include Columns Inferred**     | Enables recreating the streaming table with added transformations after syncing columns. |
-| **File Location** | External cloud location of the file. |
-| **File Format** | - CSV <br/>- JSON |
-| **Delimiter** | The delimiter used in case of a CSV file. |
-| **Header** | Specifies if a header is needed for CSV file parsing. |
 | **Table Properties**             | Defines table properties like quality. |
 | **Refresh Stream**               | Enables full refresh of the table if any changes in structure occur. |
 | **Partition By** | Specifies the columns used for partitioning the streaming table. |
 | **Table Constraints** | - **Primary Key**<br/>- **Foreign Key** |
 | **Other Constraints** | - **Column Name**<br/>- **Expectation Expression**<br/>- **On Violation Action** |
+
+
+<h4 id="file-options"> File options </h4>
+
+| **Option**                     | **Description** |
+|----------------------------------|---------------|
+| **File Location** | External cloud location of the file. |
+| **File Name/File Pattern**     | The pattern to identify files to be processed. |
+| **File Type**                  | - Options: **CSV**, **JSON**, **Parquet**, **Avro**, **ORC**, **Text**, **XML**. |
+| **Advanced File Load Options** | Toggle to enable additional loading options for files. |
+| **Advanced File Format Options** | Toggle to enable additional formatting options for files. |
+
+<h4 id="general-file-load-options"> General File Load options </h4>
+
+| **Option**                     | **Description** |
+|----------------------------------|---------------|
+| **Schema Definition**          | The schema to define the structure of the input data. |
+| **Override inferred schema columns**| The schema to define the structure of the input data. |
+| **Infer Exact Column Types**   | Toggles whether to infer column data types accurately. |
+| **Ignore Corrupt Files**       | Toggle to ignore files that are corrupt during processing. |
+| **Ignore Missing Files**       | Toggle to ignore files that are missing during processing. |
+| **Partition Columns**          | Comma-separated list of Hive-style partition columns to include|
+
+<h4 id="advanced-file-load-options"> Advanced File Load options </h4>
+
+| **Option**                     | **Description** |
+|----------------------------------|---------------|
+| **Process files modified after (Ex '2024-01-01T00:00:00Z')**   | Only process files modified after this timestamp |
+| **Process files modified before (Ex'2024-12-31T23:59:59Z')**       | Only process files modified before this timestamp |
+| **Recursive file lookup**       | Search nested directories regardless of naming scheme. Default: false |
+| **Use strict glob pattern matching**          | Use strict glob pattern matching. Default: true|
+
+<h4 id="file-format-options"> File Format options </h4>
+
+<h5 id="parquet-options">PARQUET Options</h5>
+
+| **Group**        | **Option**            |  **Description**                                            |
+|------------------|-----------------------|------------------------------------------------------------|
+| Options          | Merge Schema           |  Infer and merge schema across multiple files. Default: false |
+| Options          | Column name for rescued data column |  Column name to collect data that doesn't match schema     |
+| Advanced         | Datetime rebase mode    | Rebasing DATE/TIMESTAMP between Julian and Proleptic Gregorian calendars. Options: EXCEPTION, LEGACY, CORRECTED. Default: LEGACY |
+| Advanced         | Integer rebase mode       | Rebasing INT96 timestamps. Options: EXCEPTION, LEGACY, CORRECTED. Default: LEGACY |
+
+<h5 id="avro-options">AVRO Options</h5>
+
+| **Group**        | **Option**            | **Description**                                            |
+|------------------|-----------------------|---------------------------------------------------------------|
+| Options          | avroSchema            | User-provided Avro schema (can be evolved schema)        |
+| Options          | Merge Schema          | Infer and merge schema across files. Default: false       |
+| Options          | Column name for rescued data column     |Column name to collect data that doesn't match schema     |
+| Advanced         | Datetime rebase mode    | Rebasing DATE/TIMESTAMP between Julian and Proleptic Gregorian calendars. Options: EXCEPTION, LEGACY, CORRECTED. Default: LEGACY |
+| Advanced         | Integer rebase mode       | Rebasing INT96 timestamps. Options: EXCEPTION, LEGACY, CORRECTED. Default: LEGACY |
+
+<h5 id="orc-options">ORC Options</h5>
+
+| **Group**        | **Option**            |  **Description**                                            |
+|------------------|-----------------------|------------------------------------------------------------|
+| Options          | Merge Schema           | Infer and merge schema across files. Default: false       |
+
+
+<h5 id="xml-options">XML Options</h5>
+
+| **Group**           | **Option**            |  **Description**                                            |
+|---------------------|-----------------------|------------------------------------------------------------|
+| Options             | Row Tag                | Required. XML element to treat as a row (e.g., 'book' for `<books><book>...</book></books>`) |
+| Options             | Encoding               |Character encoding. Default: UTF-8                        |
+| Options             | String representation of null | String representation of null. Default: null             |
+| Options             | Column name for rescued data column| Column name to collect data that doesn't match schema     |
+| Advanced            | Prefix for attribute  |Prefix for attribute field names. Default: _              |
+| Advanced            | valueTag              | Tag for character data in elements with attributes. Default: _VALUE |
+| Advanced            | Exclude attributes from elements | Exclude attributes from elements. Default: false          |
+| Advanced            | Skip surrounding whitespace| Skip surrounding whitespace. Default: true                |
+| Advanced            | Ignore namespace | Ignore namespace prefixes. Default: false                 |
+| Advanced            | Sampling Ratio        | Fraction of rows for schema inference. Default: 1.0       |
+| Advanced            | Mode                  | Corrupt record handling. Options: PERMISSIVE, DROPMALFORMED, FAILFAST. Default: PERMISSIVE |
+| Advanced            | Date Parsing Format   | Date parsing format. Default: yyyy-MM-dd                  |
+| Advanced            | Timestamp Parsing Format | Timestamp parsing format. Default: yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX] |
+| Advanced            | Path to XSD for row validation| Path to XSD for row validation       
+
+<h5 id="text-options">TEXT Options</h5>
+
+| **Group**        | **Option**            |  **Description**                                            |
+|------------------|-----------------------|------------------------------------------------------------|
+| Options          | encoding              | Character encoding. Default: UTF-8                        |
+| Options          | Line Separator               | Line separator string. Default: auto-detects \r, \r\n, \n |
+| Advanced         | Whole text            | Read entire file as single record. Default: false         |
+
+
+<h5 id="json-options">JSON Options</h5>
+
+| **Group**          | **Option**            | **Description**                                            |
+|--------------------|-----------------------|------------------------------------------------------------
+| Options            | Encoding              |  Character encoding. Default: UTF-8                        |
+| Options            | quote                 | Quote character. Default: "                               |
+| Options            | escape                | Escape character. Default: \                               |
+| Advanced           | Skip surrounding whitespace| Skip surrounding whitespace. Default: true                |
+| Options            | Number of rows to skip from beginning      | Number of rows to skip from beginning. Default: 0         |
+| Options            | Column name for rescued data column  | Column name for rescued data                              |
+| Advanced           | MultiLine             | Records span multiple lines. Default: false               |
+| Advanced           | Mode                  | Options: PERMISSIVE, DROPMALFORMED, FAILFAST. Default: PERMISSIVE |
+| Advanced           | Character indicating line comment| Character indicating line comment. Default: disabled       |
+| Advanced           | dateFormat            | Date parsing format. Default: yyyy-MM-dd                  |
+| Advanced           | timestampFormat       | Timestamp parsing format                                   |
+| Advanced           | Ignore Leading WhiteSpaces| Default: false                                            |
+| Advanced           | ignore Trailing WhiteSpaces| toggleButton     | Default: false                                            |
+| Advanced           | Allowcomments | Allow comments in JSON data. Default: false       |
+| Advanced           | AllowUnquotedFieldNames|Allow unquoted field names. Default: false        |
+| Advanced           | InferPrimitiveTypes    | Infer primitive types correctly. Default: true     |
+
+<h5 id="csv-options">CSV Options</h5>
+
+| **Group**          | **Option**            | **Description**                                            |
+|--------------------|-----------------------|------------------------------------------------------------|
+| Options            | Delimiter             |  Delimiter used in csv files                              |
+| Options            | Header added          |  Header added in csv file                                 |
+| Options            | Encoding              |  Character encoding. Default: UTF-8                        |
+| Options            | quote                 | Quote character. Default: "                               |
+| Options            | escape                | Escape character. Default: \                               |
+| Advanced           | Skip surrounding whitespace| Skip surrounding whitespace. Default: true                |
+| Options            | Number of rows to skip from beginning      | Number of rows to skip from beginning. Default: 0         |
+| Options            | Column name for rescued data column  | Column name for rescued data                              |
+| Advanced           | MultiLine             | Records span multiple lines. Default: false               |
+| Advanced           | Mode                  | Options: PERMISSIVE, DROPMALFORMED, FAILFAST. Default: PERMISSIVE |
+| Advanced           | Character indicating line comment| Character indicating line comment. Default: disabled       |
+| Advanced           | dateFormat            | Date parsing format. Default: yyyy-MM-dd                  |
+| Advanced           | timestampFormat       | Timestamp parsing format                                   |
+| Advanced           | Ignore Leading WhiteSpaces| Default: false                                            |
+| Advanced           | ignore Trailing WhiteSpaces| toggleButton     | Default: false                                            |
 
 ### Schedule Options
 
