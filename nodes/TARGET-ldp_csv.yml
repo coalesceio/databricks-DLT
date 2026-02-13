@@ -42,8 +42,8 @@ operation:
     infercolumntypes: false
     int96ebaseMode: LEGACY
     lineSep: ""
-    mergeSchema: false
-    mode: ""
+    mergeSchema: true
+    mode: PERMISSIVE
     modifiedAfter: ""
     modifiedBefore: ""
     mulline: true
