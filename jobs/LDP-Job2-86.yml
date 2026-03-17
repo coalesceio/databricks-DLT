@@ -1,0 +1,6 @@
+excludeSelector: ""
+fileVersion: 1
+id: "86"
+includeSelector: "{ location: TARGET name: ldp_csv_user_samp13 }"
+name: LDP-Job2
+type: Job

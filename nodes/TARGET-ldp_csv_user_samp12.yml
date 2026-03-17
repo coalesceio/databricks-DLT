@@ -65,16 +65,16 @@ operation:
     rescuedDataColumn: ""
     rowValidationXSDPath: ""
     samplingRatio: ""
-    schedulePeriodOption: ""
-    schedulerefresh: false
+    schedulePeriodOption: Periodic schedule
+    schedulerefresh: true
     schemahints: ""
     schemaopt: ""
     skipRows: ""
     tableconstraints: false
     tblproperties: ""
     timestampFormat: yyyy-MM-dd HH:mm:ss
-    tp: ""
-    tph: ""
+    tp: EVERY HOURS
+    tph: "30"
     useStrictGlobber: false
     wholeText: ""
     xmlrwTag: ""
