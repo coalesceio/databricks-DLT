@@ -1,14 +1,11 @@
 fileVersion: 1
-id: d45ab1c8-334d-4a90-907a-1055c96db8cc
-name: ldp_json_schema
+id: 088c5741-2328-4149-89d2-c0524cd654e4
+name: ldp_csv_user_samp12
 operation:
   config:
     DLTtype: STREAMING TABLE
-    advfileforopt: false
+    advfileforopt: true
     advfileopt: true
-    allowComments: false
-    allowSingleQuotes: false
-    allowUnquotedFieldNames: false
     aschemaopt: ""
     attributePrefix: ""
     comment: ""
@@ -19,22 +16,21 @@ operation:
     cron: ""
     crontz: ""
     dataaddress: "1"
-    dateFormat: ""
+    dateFormat: yyyy-MM-dd
     datetimeRebaseMode: LEGACY
-    delimiter: ""
-    dropFieldIfAllNull: false
+    delimiter: ","
     encoding: UTF-8
-    escape: ""
+    escape: \\
     excludeAttribute: false
-    fileformat: json
+    fileformat: csv
     fileloc: /Volumes/coalesce/target_de/target-gcp/
-    filepat: shipper.json
+    filepat: users12.csv
     foreign: false
     foreignkeycon:
       items:
         - {}
     foreignkeyname: ""
-    header: true
+    header: false
     headerrows: "1"
     igcorfiles: false
     igmisfiles: false
@@ -46,8 +42,8 @@ operation:
     infercolumntypes: false
     int96ebaseMode: LEGACY
     lineSep: ""
-    mergeSchema: false
-    mode: LEGACY
+    mergeSchema: true
+    mode: ""
     modifiedAfter: ""
     modifiedBefore: ""
     mulline: true
@@ -57,13 +53,12 @@ operation:
     partitionclause:
       items:
         - {}
-    partitioncolumns: ""
+    partitioncolumns: year
     primary: false
     primarykeycon:
       items:
         - {}
     primarykeyname: ""
-    primitivesAsString: false
     quote: ""
     readfiles: true
     recursiveFileLookup: false
@@ -73,14 +68,14 @@ operation:
     schedulePeriodOption: ""
     schedulerefresh: false
     schemahints: ""
-    schemaopt: ShipperID int,CompanyName string,Phone string
+    schemaopt: ""
     skipRows: ""
     tableconstraints: false
     tblproperties: ""
-    timestampFormat: ""
+    timestampFormat: yyyy-MM-dd HH:mm:ss
     tp: ""
     tph: ""
-    useStrictGlobber: true
+    useStrictGlobber: false
     wholeText: ""
     xmlrwTag: ""
     xmlvalTag: ""
@@ -98,13 +93,64 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: db1d1e94-cfee-4708-9e09-b5eb8a59d3d3
-          stepCounter: d45ab1c8-334d-4a90-907a-1055c96db8cc
+          columnCounter: 1e9ac266-2b82-467a-8999-c76bdb9d1615
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: id
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fac5aabd-9d75-418c-ac37-22b242f8160b
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b331197-ecc0-4b21-ab27-4a9db5b7d9ba
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: event
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38789543-14d5-47cc-9a1c-da97400ba07b
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
         config: {}
         dataType: INT
         defaultValue: ""
         description: ""
-        name: shipperid
+        name: year
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -115,30 +161,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 05942c93-a0ab-4cd2-9d4c-bf78c4886c41
-          stepCounter: d45ab1c8-334d-4a90-907a-1055c96db8cc
+          columnCounter: 606d6348-ac8b-429d-8838-d1aa2a9f157b
+          stepCounter: 088c5741-2328-4149-89d2-c0524cd654e4
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: companyname
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 19cd5915-cabe-4a6b-ad10-8ec4bf53ac68
-          stepCounter: d45ab1c8-334d-4a90-907a-1055c96db8cc
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: phone
+        name: _rescued_data
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -153,9 +182,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: ldp_json_schema
+        name: ldp_csv_user_samp12
         noLinkRefs: []
-  name: ldp_json_schema
+  name: ldp_csv_user_samp12
   overrideSQL: false
   schema: ""
   sqlType: "368"
