@@ -10,7 +10,7 @@ operation:
         - {}
     delimiter: "|"
     fileformat: csv
-    fileloc: /Volumes/coalesce/target_de/target-gcp/
+    fileloc: /Volumes/coalesce/target_dev/target-gcp
     filepat: baby.csv
     foreign: false
     foreignkeycon:
