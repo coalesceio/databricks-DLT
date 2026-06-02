@@ -1,8 +1,8 @@
-# **Lakeflow Declarative Pipelines**
+# Lakeflow Declarative Pipelines
 
-## **Brief Summary**
+The Coalesce Lakeflow Declarative Pipelines (LDP) Package helps you create and deploy streaming tables in Databricks.
 
-The Coalesce LDP node type allows you to create a streaming table.
+The Coalesce LDP Node type allows you to create a streaming table.
 A streaming table is a form of Unity Catalog managed table that is also a streaming target for Lakeflow Declarative Pipelines.
 
 [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt/concepts)
@@ -10,18 +10,17 @@ is a declarative framework for developing and running batch and streaming data p
 
 A [streaming table](https://docs.databricks.com/aws/en/dlt/streaming-tables) is a Delta table with additional support for streaming or incremental data processing. A streaming table can be targeted by one or more flows in an ETL pipeline.
 
-## **Key points**
+## Key Points
 
-1.Databricks by default creates tables with lowercase.Hence,it is better to keep table names in lowercase.[https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html](https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html)
+1. Databricks creates tables with lowercase names by default, so keep table names in lowercase. See [Databricks SQL name rules](https://docs.databricks.com/en/sql/language-manual/sql-ref-names.html).
 
-2.The node which loads from a file creates a streaming table.For further processing,Re-Sync the columns in the mapping grid using Re-Sync columns button.
-The streaming table can be re-created with the Columns inferred using Include Columns Inferred option.
+2. The Node that loads from a file creates a streaming table. For further processing, re-sync the columns in the mapping grid using the **Re-Sync Columns** button. You can recreate the streaming table with inferred columns using the **Include Columns Inferred** option.
 
 ![dlt-resync](https://github.com/user-attachments/assets/8199536e-ef4d-4b24-ab69-ce8c89356938)
 
-3.The streaming tables can be recreated and refreshed if there is a need to drop the inferred columns or add transformations to columns inferred in previous step.The structure of the streaming table is refreshed only on enabling the 'Refresh Stream' Option
+3. You can recreate and refresh streaming tables when you need to drop inferred columns or add transformations to columns inferred in a previous step. The streaming table structure refreshes only when you enable the **Refresh Stream** option.
 
-### **LDP Node Configuration**
+### LDP Node Configuration
 
 The LDP has two configuration groups:
 
@@ -42,8 +41,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the Node will be deployed or redeployed when changes are detected<br/>If FALSE the Node will not be deployed or will be dropped during redeployment |
 
 ### General Options
 
@@ -205,10 +204,10 @@ Schedule Options is available only when Schedule Refresh toggle is True
 |**CRON string**|Available when Task Schedule is Set to CRON|
 |**CRON TIME ZONE**|Available when Task Schedule is Set to CRON |
 
-## **LDP Deployment**
+## LDP Deployment
 
 ### Initial Deployment
-When deployed for the first time into an environment DLT node will execute three stages:
+When deployed for the first time into an Environment, the LDP Node executes the following stages:
 
 | **Stage** | **Description** |
 |-----------|----------------|
